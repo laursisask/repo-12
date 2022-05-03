@@ -1,0 +1,9 @@
+**/Dockerfile
+**/Dockerfile-*
+**/docker-compose.yaml
+**/docker-compose.yml
+
+**/.git/
+**/.vs/
+**/.vscode/
+**/.github
