@@ -59,6 +59,14 @@ jobs:
             type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }}
             type=semver,pattern={{major}},value=${{ matrix.variants.version }}
 
+            type=match,pattern=(\d+\.\d+\.\d+\.\d+),group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+\.\d+\.\d+)\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+\.\d+)\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+)\.\d+\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+
+            type=raw,value=${{ matrix.variants.version }}
+            type=raw,value=latest,enable={{is_default_branch}}
+
       - uses: docker/login-action@v1
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
