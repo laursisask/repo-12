@@ -11,6 +11,7 @@ Images are published to our internal container image registry hosted on Azure. C
 ```
 contrastdotnet.azurecr.io/agent-operator/agents/dotnet-core
 contrastdotnet.azurecr.io/agent-operator/agents/java
+contrastdotnet.azurecr.io/agent-operator/agents/nodejs
 ```
 
 Tags are generated in the following format:
