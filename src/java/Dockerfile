@@ -2,7 +2,7 @@ FROM ubuntu:bionic AS builder
 
 RUN set -xe \
   && apt-get update \
-  && apt-get install -y curl unzip rsync
+  && apt-get install -y curl
 
 ARG VERSION=3.13.0.26525
 
