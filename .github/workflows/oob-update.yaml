@@ -4,10 +4,6 @@ on:
     types:
       - oob-update
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   oob-update:
     runs-on: ubuntu-latest
@@ -67,8 +63,6 @@ jobs:
           commit-message: |
             Upgraded '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
           branch: actions/oob-${{ steps.validate-event.outputs.agent-type }}-${{ steps.validate-event.outputs.agent-version }}'
-          author: GitHub <noreply@github.com>
-          committer: GitHub <noreply@github.com>
           title: |
             [OOB] Upgrades '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
           body: |
@@ -78,6 +72,7 @@ jobs:
             Version: `${{ steps.stage-changes.outputs.old-version }}` -> `${{ steps.validate-event.outputs.agent-version }}`
           labels: |
             oob-update
+          token: ${{ secrets.GH_PR_WRITE_PAT }}
 
       - uses: peter-evans/enable-pull-request-automerge@v2
         if: steps.create-pr.outputs.pull-request-operation == 'created'
