@@ -111,8 +111,6 @@ jobs:
   release-internal:
     runs-on: ubuntu-latest
     environment: internal
-    concurrency:
-      group: internal-${{ matrix.variants.type }}
     needs:
       - build
     strategy:
@@ -130,6 +128,8 @@ jobs:
         - type: php
           digest: ${{ needs.build.outputs.artifact-image-php }}
           version: ${{ needs.build.outputs.artifact-version-php }}
+    concurrency:
+      group: internal-${{ matrix.variants.type }}
     if: ${{ github.ref == 'refs/heads/master' }}
     steps:
       - uses: actions/checkout@v2
@@ -165,47 +165,63 @@ jobs:
   #
   # Release Public Stage
   #
-  # release-public:
-  #   runs-on: ubuntu-latest
-  #   environment: public
-  #   concurrency:
-  #     group: public
-  #     cancel-in-progress: true
-  #   needs:
-  #     - generate-version
-  #     - build-image
-  #     - build-manifests
-  #     - release-internal
-  #   env:
-  #     BUILD_VERSION: ${{ needs.generate-version.outputs.version }}
-  #     IMAGE_NAME: docker.io/contrastsecurityinc/agent-operator
-  #   if: ${{ needs.generate-version.outputs.version != '0.0.1' }}
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Login (Azure)
-  #       uses: docker/login-action@v1
-  #       with:
-  #         registry: contrastdotnet.azurecr.io
-  #         username: ${{ secrets.AZURE_CLIENT_ID }}
-  #         password: ${{ secrets.AZURE_CLIENT_SECRET }}
-  #     - name: Login (Dockerhub)
-  #       uses: docker/login-action@v1
-  #       with:
-  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
-  #         password: ${{ secrets.DOCKERHUB_PAT }}
-  #     - name: Docker Meta
-  #       id: meta
-  #       uses: docker/metadata-action@v3
-  #       with:
-  #         images: ${{ env.IMAGE_NAME }}
-  #         tags: |
-  #           type=semver,pattern={{version}},value=${{ env.BUILD_VERSION }}
-  #           type=semver,pattern={{major}}.{{minor}},value=${{ env.BUILD_VERSION }}
-  #           type=semver,pattern={{major}},value=${{ env.BUILD_VERSION }}
-  #           type=raw,latest
-  #     - name: Tag for Release
-  #       uses: akhilerm/tag-push-action@v2.0.0
-  #       with:
-  #         src: contrastdotnet.azurecr.io/agent-operator/operator@${{ needs.build-image.outputs.digest }}
-  #         dst: |
-  #           ${{ steps.meta.outputs.tags }}
+  release-public:
+    runs-on: ubuntu-latest
+    environment: public
+    needs:
+      - build
+      - release-internal
+    strategy:
+      matrix:
+        variants:
+        - type: dotnet-core
+          digest: ${{ needs.build.outputs.artifact-image-dotnet-core }}
+          version: ${{ needs.build.outputs.artifact-version-dotnet-core }}
+        - type: java
+          digest: ${{ needs.build.outputs.artifact-image-java }}
+          version: ${{ needs.build.outputs.artifact-version-java }}
+        - type: nodejs
+          digest: ${{ needs.build.outputs.artifact-image-nodejs }}
+          version: ${{ needs.build.outputs.artifact-version-nodejs }}
+        - type: php
+          digest: ${{ needs.build.outputs.artifact-image-php }}
+          version: ${{ needs.build.outputs.artifact-version-php }}
+    concurrency:
+      group: public-${{ matrix.variants.type }}
+    if: ${{ github.ref == 'refs/heads/master' }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login (Azure)
+        uses: docker/login-action@v1
+        with:
+          registry: contrastdotnet.azurecr.io
+          username: ${{ secrets.AZURE_CLIENT_ID }}
+          password: ${{ secrets.AZURE_CLIENT_SECRET }}
+      - name: Login (Dockerhub)
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PAT }}
+      - name: Docker Meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: docker.io/contrastsecurityinc/agent-${{ matrix.variants.type }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+            type=semver,pattern={{major}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+
+            type=match,pattern=(\d+\.\d+\.\d+\.\d+),group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+\.\d+\.\d+)\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+\.\d+)\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=match,pattern=(\d+)\.\d+\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+
+            type=raw,value=${{ matrix.variants.version }}
+            type=raw,value=latest
+      - name: Tag for Release
+        uses: akhilerm/tag-push-action@v2.0.0
+        with:
+          src: ${{ matrix.variants.digest }}
+          dst: |
+            ${{ steps.meta.outputs.tags }}
