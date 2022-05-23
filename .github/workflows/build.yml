@@ -1,0 +1,114 @@
+name: "Build"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  #
+  # Building Stage
+  #
+  build:
+    strategy:
+      matrix:
+        variant:
+          - dotnet-core
+          - java
+          - nodejs
+          - php
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-image-dotnet-core: ${{ steps.detect-artifact.outputs.artifact-image-dotnet-core }}
+      artifact-image-java: ${{ steps.detect-artifact.outputs.artifact-image-java }}
+      artifact-image-nodejs: ${{ steps.detect-artifact.outputs.artifact-image-nodejs }}
+      artifact-image-php: ${{ steps.detect-artifact.outputs.artifact-image-php }}
+    env:
+      AGENT_TYPE: ${{ matrix.variant }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Load Manifest
+        id: load-manifest
+        run: |
+          $manifest = Get-Content './src/${{ env.AGENT_TYPE }}/manifest.json' | ConvertFrom-Json
+          Write-Host "::set-output name=version::$($manifest.version)"
+          Write-Host "::set-output name=image-name-suffix::$($manifest.imageNameSuffix)"
+          Write-Host "::set-output name=docker-file::$($manifest.dockerFile)"
+          Write-Host "::set-output name=context::$($manifest.context)"
+
+          Write-Host "::set-output name=image-name::contrastdotnet.azurecr.io/agent-operator/agents/$($manifest.imageNameSuffix)"
+        shell: pwsh
+
+      - uses: docker/setup-buildx-action@v1
+        with:
+          install: true
+          version: latest
+
+      - name: Docker Meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ steps.load-manifest.outputs.image-name }}
+          tags: |
+            type=raw,value=trunk-artifact,enable=${{ github.ref == 'refs/heads/master' }}
+            type=raw,value=pr-artifact,enable=${{ github.event_name == 'pull_request' }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - uses: docker/login-action@v1
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        with:
+          registry: contrastdotnet.azurecr.io
+          username: ${{ secrets.AZURE_CLIENT_ID }}
+          password: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+      - uses: docker/build-push-action@v3
+        id: build
+        with:
+          file: ${{ steps.load-manifest.outputs.docker-file }}
+          context: ${{ steps.load-manifest.outputs.context }}
+          push: ${{ github.actor != 'dependabot[bot]' }}
+          cache-from: ${{ github.actor != 'dependabot[bot]' && format('type=registry,ref={0}:cache', steps.load-manifest.outputs.image-name) || ''}}
+          cache-to: ${{ github.actor != 'dependabot[bot]' && format('type=registry,ref={0}:cache,mode=max', steps.load-manifest.outputs.image-name) || ''}}
+          build-args: |
+            VERSION=${{ steps.load-manifest.outputs.version }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Detect Artifact
+        id: detect-artifact
+        run: |
+          $artifactImage = '${{ steps.load-manifest.outputs.image-name }}@${{ steps.build.outputs.digest }}'
+          Write-Host "::set-output name=artifact-image-${{ env.AGENT_TYPE }}::$artifactImage"
+        shell: pwsh
+  build-succeeded:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Create Digest Comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          if: ${{ github.actor != 'dependabot[bot]' }}
+          body: |
+            Images built:
+            ```
+            dotnet-core: ${{ needs.build.outputs.artifact-image-dotnet-core }}
+            java: ${{ needs.build.outputs.artifact-image-java }}
+            nodejs: ${{ needs.build.outputs.artifact-image-nodejs }}
+            php: ${{ needs.build.outputs.artifact-image-php }}
+            ```
+
+# type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+# type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+# type=semver,pattern={{major}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
+
+# type=match,pattern=(\d+\.\d+\.\d+\.\d+),group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+# type=match,pattern=(\d+\.\d+\.\d+)\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+# type=match,pattern=(\d+\.\d+)\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+# type=match,pattern=(\d+)\.\d+\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+
+# type=raw,value=${{ matrix.variants.version }}
+# type=raw,value=latest,enable={{is_default_branch}}
