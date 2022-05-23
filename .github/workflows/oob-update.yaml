@@ -60,6 +60,7 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
+        id: create-pr
         with:
           add-paths: |
             ${{ steps.validate-event.outputs.manifest-path }}
@@ -76,5 +77,12 @@ jobs:
             Agent: `${{ steps.validate-event.outputs.agent-type }}`
             Version: `${{ steps.stage-changes.outputs.old-version }}` -> `${{ steps.validate-event.outputs.agent-version }}`
           labels: |
-            automerge
             oob-update
+
+      - uses: peter-evans/enable-pull-request-automerge@v2
+        if: steps.create-pr.outputs.pull-request-operation == 'created'
+        with:
+          # Uses the dispatch service user, using the dotnet PAT.
+          token: ${{ secrets.GH_PR_WRITE_PAT }}
+          pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
+          merge-method: rebase
