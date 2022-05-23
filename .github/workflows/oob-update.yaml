@@ -65,8 +65,9 @@ jobs:
             ${{ steps.validate-event.outputs.manifest-path }}
           commit-message: |
             Upgraded '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
-          branch: actions/oob
-          branch-suffix: short-commit-hash
+          branch: actions/oob-${{ steps.validate-event.outputs.agent-type }}-${{ steps.validate-event.outputs.agent-version }}'
+          author: GitHub <noreply@github.com>
+          committer: GitHub <noreply@github.com>
           title: |
             [OOB] Upgrades '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
           body: |
