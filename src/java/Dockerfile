@@ -9,8 +9,8 @@ ARG VERSION=3.13.0.26525
 RUN set -xe \
   && mkdir -p /staging \
   && curl --location \
-  https://search.maven.org/remotecontent?filepath=com/contrastsecurity/contrast-agent/${VERSION}/contrast-agent-${VERSION}.jar \
-  --output /staging/contrast.jar \
+  https://repo1.maven.org/maven2/com/contrastsecurity/contrast-agent/${VERSION}/contrast-agent-${VERSION}.jar \
+  --output /staging/contrast-agent.jar \
   && echo '{ "version": "${VERSION}" }' > /staging/image-manifest.json
 
 FROM busybox:stable AS final
