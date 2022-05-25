@@ -10,16 +10,16 @@ Images are published to our internal container image registry hosted on Azure. C
 
 ```
 # Internal images:
-contrastdotnet.azurecr.io/agent-operator/agents/dotnet-core
-contrastdotnet.azurecr.io/agent-operator/agents/java
-contrastdotnet.azurecr.io/agent-operator/agents/nodejs
-contrastdotnet.azurecr.io/agent-operator/agents/php
+contrastdotnet.azurecr.io/agent-operator/agent-dotnet-core
+contrastdotnet.azurecr.io/agent-operator/agent-java
+contrastdotnet.azurecr.io/agent-operator/agent-nodejs
+contrastdotnet.azurecr.io/agent-operator/agent-php
 
 # Public images:
-contrastsecurityinc/agent-dotnet-core
-contrastsecurityinc/agent-java
-contrastsecurityinc/agent-nodejs
-contrastsecurityinc/agent-php
+contrast/agent-dotnet-core
+contrast/agent-java
+contrast/agent-nodejs
+contrast/agent-php
 ```
 
 Tags are generated in the following format:
