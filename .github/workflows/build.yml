@@ -94,9 +94,9 @@ jobs:
     steps:
       - name: Create Digest Comment
         uses: peter-evans/create-or-update-comment@v2
+        if: ${{ github.actor != 'dependabot[bot]' }}
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          if: ${{ github.actor != 'dependabot[bot]' }}
           body: |
             Images built:
             ```
