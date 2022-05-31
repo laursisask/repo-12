@@ -10,7 +10,7 @@ RUN set -xe \
 FROM busybox:stable AS final
 
 COPY ./src/shared/entrypoint.sh /entrypoint.sh
-COPY --from=builder /staging/node_modules /staging
+COPY --from=builder /staging /staging
 
 ARG VERSION=4.18.0
 ENV CONTRAST_MOUNT_PATH=/contrast \
