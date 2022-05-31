@@ -4,9 +4,11 @@ Images for the [agent-operator](https://github.com/Contrast-Security-Inc/agent-o
 
 Managed by the .NET team.
 
+For questions, suggestions, bugs, see [#agent-operator](https://contrastsecurityinc.slack.com/archives/C03FNADV430).
+
 ## Images
 
-Images are published to our internal container image registry hosted on Azure. Currently, this repo publishes:
+Images are published to our internal container image registry hosted on Azure, while public images are deployed to DockerHub. Currently, this repo publishes:
 
 ```
 # Internal images:
