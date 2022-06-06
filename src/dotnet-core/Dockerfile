@@ -9,16 +9,16 @@ ARG VERSION=2.1.10
 RUN set -xe \
   && curl --location https://www.nuget.org/api/v2/package/Contrast.SensorsNetCore/${VERSION} --output /tmp/contrast.zip \
   && unzip /tmp/contrast.zip -d /tmp/contrast \
-  && rsync -aP /tmp/contrast/contentFiles/any/netstandard2.0/contrast/* /staging/ \
-  && echo '{ "version": "${VERSION}" }' > /staging/image-manifest.json
+  && rsync -aP /tmp/contrast/contentFiles/any/netstandard2.0/contrast/* /contrast/ \
+  && echo '{ "version": "${VERSION}" }' > /contrast/image-manifest.json
 
 FROM busybox:stable AS final
 
 COPY ./src/shared/entrypoint.sh /entrypoint.sh
-COPY --from=builder /staging /staging
+COPY --from=builder /contrast /contrast
 
 ARG VERSION=2.1.10
-ENV CONTRAST_MOUNT_PATH=/contrast \
+ENV CONTRAST_MOUNT_PATH=/contrast-init \
   CONTRAST_VERSION=${VERSION}
 
 ENTRYPOINT [ "/bin/sh", "/entrypoint.sh" ]

@@ -35,6 +35,22 @@ Tags are generated in the following format:
 
 For agents that support semantic versioning. For the Java agent, the format is similar.
 
+## Image layout
+
+All images contain a directory of `/contrast` containing all the agent files. This directory is stable and may be publicly documented.
+
+Inside this directory is a json file `/contrast/image-manifest.json` with the layout of:
+
+```json
+{
+    "version": "${VERSION}"
+}
+```
+
+This file may be used by agents or for debugging containerized deployments in production. Additional information may be added in the future.
+
+Upon starting, the default entrypoint of these images will copy all files from `/contrast` to `$CONTRAST_MOUNT_PATH` (defaults to `/contrast-init`) and exit. Some agents may require a specific `CONTRAST_MOUNT_PATH` to function correctly.
+
 ## Updating Images
 
 Images are updated by executing a repository dispatch with a provided PAT.

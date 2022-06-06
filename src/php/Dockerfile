@@ -12,19 +12,19 @@ RUN set -xe \
   && echo "deb https://pkg.contrastsecurity.com/debian-public/ all contrast" >> /etc/apt/sources.list.d/contrast.list \
   && apt-get update \
   && apt-get install -y contrast-php-agent=${VERSION} \
-  && mkdir -p /staging \
-  && mkdir -p /staging/ini \
-  && rsync -aP /usr/local/lib/contrast/php/ /staging/ \
-  && echo 'extension=${CONTRAST_MOUNT_PATH}/contrast.so' > /staging/ini/php.ini \
-  && echo '{ "version": "${VERSION}" }' > /staging/image-manifest.json
+  && mkdir -p /contrast \
+  && mkdir -p /contrast/ini \
+  && rsync -aP /usr/local/lib/contrast/php/ /contrast/ \
+  && echo 'extension=${CONTRAST_MOUNT_PATH}/contrast.so' > /contrast/ini/php.ini \
+  && echo '{ "version": "${VERSION}" }' > /contrast/image-manifest.json
 
 FROM busybox:stable AS final
 
 COPY ./src/shared/entrypoint.sh /entrypoint.sh
-COPY --from=builder /staging /staging
+COPY --from=builder /contrast /contrast
 
 ARG VERSION=1.2.0
-ENV CONTRAST_MOUNT_PATH=/contrast \
+ENV CONTRAST_MOUNT_PATH=/contrast-init \
   CONTRAST_VERSION=${VERSION}
 
 ENTRYPOINT [ "/bin/sh", "/entrypoint.sh" ]
