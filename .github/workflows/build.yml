@@ -179,14 +179,9 @@ jobs:
         with:
           images: contrastdotnet.azurecr.io/agent-operator/agent-${{ matrix.variants.type }}
           tags: |
-            type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-            type=semver,pattern={{major}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-
-            type=match,pattern=(\d+\.\d+\.\d+\.\d+),group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+\.\d+\.\d+)\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+\.\d+)\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+)\.\d+\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
+            type=semver,pattern={{version}},value=${{ matrix.variants.version }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }}
+            type=semver,pattern={{major}},value=${{ matrix.variants.version }}
 
             type=raw,value=${{ matrix.variants.version }}
             type=raw,value=latest
@@ -242,15 +237,9 @@ jobs:
         with:
           images: docker.io/contrast/agent-${{ matrix.variants.type }}
           tags: |
-            type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-            type=semver,pattern={{major}},value=${{ matrix.variants.version }},enable=${{ matrix.variants.type != 'java' }}
-
-            type=match,pattern=(\d+\.\d+\.\d+\.\d+),group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+\.\d+\.\d+)\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+\.\d+)\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-            type=match,pattern=(\d+)\.\d+\.\d+\.\d+,group=1,value=${{ matrix.variants.version }},enable=${{ matrix.variants.type == 'java' }}
-
+            type=semver,pattern={{version}},value=${{ matrix.variants.version }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }}
+            type=semver,pattern={{major}},value=${{ matrix.variants.version }}
             type=raw,value=${{ matrix.variants.version }}
             type=raw,value=latest
       - name: Tag for Release
