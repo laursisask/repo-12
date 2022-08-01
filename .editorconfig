@@ -6,6 +6,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 file_header_template = Contrast Security, Inc licenses this file to you under the Apache 2.0 License.\nSee the LICENSE file in the project root for more information.
 
-[*.yaml,Dockerfile]
+[*.yaml,*.json,Dockerfile]
 indent_style = space
 indent_size = 2
+charset = utf-8
