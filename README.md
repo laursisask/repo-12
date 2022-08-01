@@ -16,7 +16,7 @@ Public images are deployed to DockerHub. Currently, this repo publishes:
 - [![contrast/agent-php](https://img.shields.io/docker/v/contrast/agent-php?label=contrast%2Fagent-php&logo=docker&logoColor=white&style=flat-square&cacheSeconds=10800)](https://hub.docker.com/r/contrast/agent-php)
 
 
-Tags are generated in the following format for agents that support semantic versioning. For the Java agent, the format is similar.
+Tags are generated in the following format:
 
 ```
 :2
@@ -29,7 +29,7 @@ Tags are generated in the following format for agents that support semantic vers
 
 All images contain a directory of `/contrast` containing all the agent files. This directory is stable and may be publicly documented.
 
-Inside this directory is a json file `/contrast/image-manifest.json` with the layout of:
+Inside this directory is a json file `image-manifest.json` with the layout of:
 
 ```json
 {
@@ -40,6 +40,8 @@ Inside this directory is a json file `/contrast/image-manifest.json` with the la
 This file may be used by agents or for debugging containerized deployments in production. Additional information may be added in the future.
 
 Upon starting, the default entrypoint of these images will copy all files from `/contrast` to `$CONTRAST_MOUNT_PATH` (defaults to `/contrast-init`) and exit. Some agents may require a specific `CONTRAST_MOUNT_PATH` to function correctly.
+
+> The .NET Framework agent image does not contain an entrypoint and should only be used to aid in creating base images for Windows Containers. .NET Framework agent files are located in `C:\Contrast`.
 
 ## Updating Images
 
