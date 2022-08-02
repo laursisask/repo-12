@@ -65,3 +65,7 @@ Merging into trunk starts the following events:
 - Create and publish all images in this repository.
 - When all images have been built successfully, start a deployment to `internal`. This copies the artifact images from the first step, with final image tags.
 - When the internal environment deployment has succeeded, start a deployment to `public`.
+
+## Creating Backports
+
+Backports may be created by pushing a branch in the format of `backport/<agent name>-v<agent version>` with the version of the agent being backported. Backports will not update the `latest` tag and will not update the Major/Minor tags.
