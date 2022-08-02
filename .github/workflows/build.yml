@@ -61,8 +61,6 @@ jobs:
             type=raw,value=trunk-artifact,enable=${{ github.ref == 'refs/heads/master' }}
             type=raw,value=backport-artifact,enable=${{ startsWith(github.ref, 'refs/heads/backport/') }}
             type=raw,value=pr-artifact,enable=${{ github.event_name == 'pull_request' }}
-          labels: |
-            org.opencontainers.image.revision=${{ steps.load-manifest.outputs.version }}
 
       - uses: docker/login-action@v2
         with:
@@ -82,7 +80,12 @@ jobs:
           build-args: |
             VERSION=${{ steps.load-manifest.outputs.version }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            org.opencontainers.image.title=agent-operator-images
+            org.opencontainers.image.description=Images of agents for the agent-operator.
+            org.opencontainers.image.url=https://github.com/Contrast-Security-OSS/agent-operator-images
+            org.opencontainers.image.source=https://github.com/Contrast-Security-OSS/agent-operator-images
+            org.opencontainers.image.version=${{ steps.load-manifest.outputs.version }}
 
       - name: Detect Artifact
         id: detect-artifact
