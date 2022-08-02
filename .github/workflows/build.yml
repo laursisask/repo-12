@@ -236,7 +236,7 @@ jobs:
           version: ${{ needs.build.outputs.artifact-version-php }}
     concurrency:
       group: public-${{ matrix.variants.type }}
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/backport/') }}
     steps:
       - uses: actions/checkout@v3
       - name: Login (Azure)
