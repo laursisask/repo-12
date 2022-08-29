@@ -253,11 +253,19 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PAT }}
+      - name: Login (Quay)
+        uses: docker/login-action@v2
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
       - name: Docker Meta
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: docker.io/contrast/agent-${{ matrix.variants.type }}
+          images: |
+            docker.io/contrast/agent-${{ matrix.variants.type }}
+            quay.io/contrast/agent-${{ matrix.variants.type }}
           tags: |
             type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ github.ref == 'refs/heads/master' }}
             type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ github.ref == 'refs/heads/master' }}
