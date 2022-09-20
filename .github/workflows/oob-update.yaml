@@ -62,7 +62,7 @@ jobs:
             ${{ steps.validate-event.outputs.manifest-path }}
           commit-message: |
             Upgraded '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
-          branch: actions/oob-${{ steps.validate-event.outputs.agent-type }}-${{ steps.validate-event.outputs.agent-version }}'
+          branch: actions/oob-${{ steps.validate-event.outputs.agent-type }}-${{ steps.validate-event.outputs.agent-version }}
           title: |
             [OOB] Upgrades '${{ steps.validate-event.outputs.agent-type }}' to '${{ steps.validate-event.outputs.agent-version }}'
           body: |
