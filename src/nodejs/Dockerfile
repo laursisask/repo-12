@@ -8,7 +8,7 @@ ARG VERSION=4.18.0
 RUN set -xe \
   && mkdir -p /contrast \
   && npm install --prefix /contrast @contrast/agent@${VERSION} \
-  && echo '{ "version": "${VERSION}" }' > /contrast/image-manifest.json
+  && echo "{ \"version\": \"${VERSION}\" }" > /contrast/image-manifest.json
 
 FROM busybox:stable AS final
 

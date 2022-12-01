@@ -14,7 +14,7 @@ RUN set -xe \
   && curl --location \
   https://repo1.maven.org/maven2/com/contrastsecurity/contrast-agent/${VERSION}/contrast-agent-${VERSION}.jar \
   --output /contrast/contrast-agent.jar \
-  && echo '{ "version": "${VERSION}" }' > /contrast/image-manifest.json
+  && echo "{ \"version\": \"${VERSION}\" }" > /contrast/image-manifest.json
 
 FROM busybox:stable AS final
 

@@ -8,7 +8,7 @@ ARG VERSION=5.0.0-beta.2
 RUN set -xe \
   && mkdir -p /contrast \
   && npm install --prefix /contrast @contrast/protect-agent@${VERSION} \
-  && echo '{ "version": "${VERSION}" }' > /contrast/image-manifest.json
+  && echo "{ \"version\": \"${VERSION}\" }" > /contrast/image-manifest.json
 
 FROM busybox:stable AS final
 
