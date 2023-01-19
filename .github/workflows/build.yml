@@ -207,7 +207,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/agent-operator-images/agent-${{ matrix.variants.type }}
+          images: ghcr.io/contrast-security-oss/agent-operator-images/agent-${{ matrix.variants.type }}
           tags: |
             type=semver,pattern={{version}},value=${{ matrix.variants.version }},enable=${{ github.ref == 'refs/heads/master' }}
             type=semver,pattern={{major}}.{{minor}},value=${{ matrix.variants.version }},enable=${{ github.ref == 'refs/heads/master' }}
