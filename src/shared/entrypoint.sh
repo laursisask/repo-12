@@ -4,6 +4,6 @@
 
 set -x
 mkdir -p $CONTRAST_MOUNT_PATH
-cp --no-clobber --recursive --verbose /contrast/* $CONTRAST_MOUNT_PATH/
+cp --force --recursive --verbose /contrast/* $CONTRAST_MOUNT_PATH/
 
 echo "Completed setup of $CONTRAST_AGENT_TYPE $CONTRAST_VERSION. Have fun!"
