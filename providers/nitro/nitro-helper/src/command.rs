@@ -99,7 +99,7 @@ pub fn init(
     )
     .map_err(|e| format!("failed to generate a key: {:?}", e))?;
     print_pubkey(bech32_prefix, pubkey_display, pubkey);
-    let encoded_attdoc = String::from_utf8(subtle_encoding::base64::encode(&attestation_doc))
+    let encoded_attdoc = String::from_utf8(subtle_encoding::base64::encode(attestation_doc))
         .map_err(|e| format!("enconding attestation doc: {:?}", e))?;
     println!("Nitro Enclave attestation:\n{}", &encoded_attdoc);
 

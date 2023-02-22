@@ -215,7 +215,7 @@ fn main() {
                     toml::from_str(&toml_string).expect("configuration");
                 let keypair = key_utils::load_base64_ed25519_key(config.consensus_key_path)
                     .expect("secret keypair");
-                print_pubkey(bech32_prefix, ptype, keypair.public);
+                print_pubkey(bech32_prefix, ptype, keypair.verification_key());
             }
         }
     }

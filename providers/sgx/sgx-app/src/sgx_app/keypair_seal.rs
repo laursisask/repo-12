@@ -2,10 +2,11 @@ use aes_gcm_siv::{
     aead::{generic_array::GenericArray, Aead, Payload},
     Aes128GcmSiv, KeyInit,
 };
-use ed25519_dalek::{Keypair, PublicKey, SecretKey};
+use ed25519_consensus::{SigningKey, VerificationKey};
 use rand::{rngs::OsRng, RngCore};
 use sgx_isa::{ErrorCode, Keyname, Keypolicy, Keyrequest, Report};
 use std::convert::TryInto;
+use subtle::ConstantTimeEq;
 use tmkms_light_sgx_runner::SealedKeyData;
 use zeroize::Zeroize;
 
@@ -45,12 +46,13 @@ fn seal_payload(
 /// Seals the provided ed25519 keypair with `Aes128GcmSiv`
 /// via a key request against MRSIGNER (so that versions with higher `isvsvn`
 /// can unseal the keypair)
-pub fn seal(csprng: &mut OsRng, keypair: &Keypair) -> Result<SealedKeyData, ErrorCode> {
+pub fn seal(csprng: &mut OsRng, keypair: &SigningKey) -> Result<SealedKeyData, ErrorCode> {
+    let pubkey = keypair.verification_key();
     let payload = Payload {
-        msg: keypair.secret.as_bytes(),
-        aad: keypair.public.as_bytes(),
+        msg: keypair.as_bytes(),
+        aad: pubkey.as_bytes(),
     };
-    seal_payload(csprng, payload, keypair.public.to_bytes())
+    seal_payload(csprng, payload, pubkey.to_bytes())
 }
 
 pub fn seal_secret(
@@ -92,12 +94,23 @@ pub fn unseal_secret(sealed_data: &SealedKeyData) -> Result<Vec<u8>, ErrorCode> 
 
 /// Checks the provided keyrequests
 /// and attempts to unseal the ed25519 keypair with `Aes128GcmSiv`
-pub fn unseal(sealed_data: &SealedKeyData) -> Result<Keypair, ErrorCode> {
-    if let Ok(public) = PublicKey::from_bytes(&sealed_data.seal_key_request.keyid) {
+pub fn unseal(sealed_data: &SealedKeyData) -> Result<SigningKey, ErrorCode> {
+    if let Ok(public) = VerificationKey::try_from(&sealed_data.seal_key_request.keyid[..]) {
         let mut secret_key = unseal_secret(sealed_data)?;
-        let secret = SecretKey::from_bytes(&secret_key).map_err(|_| ErrorCode::InvalidSignature)?;
+        let mut secret =
+            SigningKey::try_from(secret_key.as_ref()).map_err(|_| ErrorCode::InvalidSignature)?;
         secret_key.zeroize();
-        Ok(Keypair { secret, public })
+        if secret
+            .verification_key()
+            .as_bytes()
+            .ct_eq(public.as_bytes())
+            .unwrap_u8()
+            == 0
+        {
+            secret.zeroize();
+            return Err(ErrorCode::InvalidSignature);
+        }
+        Ok(secret)
     } else {
         Err(ErrorCode::InvalidSignature)
     }

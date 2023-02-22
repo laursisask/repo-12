@@ -8,7 +8,7 @@ use aes_gcm_siv::{
     aead::{Aead, Payload},
     Aes256GcmSiv, KeyInit,
 };
-use ed25519_dalek::{Keypair, PublicKey, SecretKey};
+use ed25519_consensus::SigningKey;
 use rand::rngs::OsRng;
 use rand::RngCore;
 use rsa::pkcs1::{DecodeRsaPrivateKey, EncodeRsaPrivateKey};
@@ -96,7 +96,7 @@ fn decrypt_wrapped_key(
 pub fn cloud_backup(
     csprng: &mut OsRng,
     backup: CloudBackupKey,
-    keypair: &Keypair,
+    keypair: &SigningKey,
 ) -> Result<CloudBackupKeyData, CloudError> {
     let mut priv_key_raw = crate::sgx_app::keypair_seal::unseal_secret(&backup.sealed_rsa_key)
         .map_err(CloudError::SealingError)?;
@@ -108,9 +108,10 @@ pub fn cloud_backup(
     let mut gk = mbackup_key?;
     let mut nonce = [0u8; 12];
     csprng.fill_bytes(&mut nonce);
+    let pubkey = keypair.verification_key();
     let payload = Payload {
-        msg: keypair.secret.as_bytes(),
-        aad: keypair.public.as_bytes(),
+        msg: keypair.as_bytes(),
+        aad: pubkey.as_bytes(),
     };
     let nonce_ga = GenericArray::from_slice(&nonce);
     let aead = Aes256GcmSiv::new(&gk);
@@ -119,7 +120,7 @@ pub fn cloud_backup(
         .map(|sealed_secret| CloudBackupKeyData {
             sealed_secret,
             nonce,
-            public_key: keypair.public,
+            public_key: keypair.verification_key(),
         })
         .map_err(|_| CloudError::EncryptionError);
     gk.zeroize();
@@ -159,12 +160,11 @@ pub fn seal_recover_cloud_backup(
     };
     if let Ok(mut secret_key) = aead.decrypt(nonce_ga, payload) {
         seal_key.zeroize();
-        let secret = SecretKey::from_bytes(&secret_key).map_err(|_| ErrorCode::InvalidSignature)?;
+        let mut secret =
+            SigningKey::try_from(secret_key.as_ref()).map_err(|_| ErrorCode::InvalidSignature)?;
+        let sealed = seal(csprng, &secret);
+        secret.zeroize();
         secret_key.zeroize();
-        let public = PublicKey::from(&secret);
-        let mut kp = Keypair { secret, public };
-        let sealed = seal(csprng, &kp);
-        kp.secret.zeroize();
         sealed
     } else {
         seal_key.zeroize();
@@ -176,7 +176,7 @@ pub fn seal_recover_cloud_backup(
 pub mod tests {
     use super::*;
     use base64::{engine::general_purpose, Engine as _};
-    use ed25519_dalek::Keypair;
+    use ed25519_consensus::SigningKey;
     use rand::RngCore;
     use rsa::BigUint;
     use rsa::PublicKey;
@@ -228,15 +228,15 @@ pub mod tests {
         let nb64 = "kyk2V71OnhuVJAZq5occtRdYxX6eGiR3qQ04UKTZQxesiU3UsnbCq7FURSEr5NTKaU1L3die6VzPn829jdVYiht55hiqsEPYrRutNtmc-dI111lPGmkSaN_WcrK9rScbNn1btnBytf6KkST5Qmeri_Ue_BBjdg_G_WPNFKy1Ds_8lDqDMl3JLHaEjtKA-OtCjNsClzqtavgMJcbxdvHqUB1grbYePM6HrlMyIY1wZUvmdZw3_gwKbNkj5_whq6jYHSG68HdH3QGdbbV8_LFdB4IcfdN0ERXbuo1_0ZXoSd-koSjhfafuBbzrKGwiyzbDm9bSaocnECqENXASMt-YLQ==";
         let eb64 = "AQAB";
 
-        let nb = general_purpose::URL_SAFE.decode(&nb64).unwrap();
-        let eb = general_purpose::URL_SAFE.decode(&eb64).unwrap();
+        let nb = general_purpose::URL_SAFE.decode(nb64).unwrap();
+        let eb = general_purpose::URL_SAFE.decode(eb64).unwrap();
         let n = BigUint::from_bytes_be(&nb);
         let e = BigUint::from_bytes_be(&eb);
         let pubkey = RsaPublicKey::new(n, e).unwrap();
         let n = pubkey.n().to_bytes_be();
         let e = pubkey.e().to_bytes_be();
-        let encoded_n = general_purpose::URL_SAFE.encode(&n);
-        let encoded_e = general_purpose::URL_SAFE.encode(&e);
+        let encoded_n = general_purpose::URL_SAFE.encode(n);
+        let encoded_e = general_purpose::URL_SAFE.encode(e);
         assert_eq!(nb64, encoded_n);
         assert_eq!(eb64, encoded_e);
     }
@@ -323,7 +323,7 @@ BTDF9yEwtrEQ1/xuPQMv8x6cnZFYH0ljjbXcTh6VJNv03MSC30pAQCrLSLl3nvHk
             sealed_rsa_key: sealed_rsa_priv,
             backup_key: cloud_seal,
         };
-        let kp = Keypair::generate(&mut csprng);
+        let kp = SigningKey::new(csprng);
         let backup = cloud_backup(&mut csprng, cbk.clone(), &kp).expect("backup");
         reseal_recover_cloud(&mut csprng, cbk, backup).expect("reseal");
     }
@@ -338,7 +338,7 @@ BTDF9yEwtrEQ1/xuPQMv8x6cnZFYH0ljjbXcTh6VJNv03MSC30pAQCrLSLl3nvHk
             sealed_rsa_key: sealed_rsa_priv,
             backup_key: cloud_seal,
         };
-        let kp = Keypair::generate(&mut csprng);
+        let kp = SigningKey::new(csprng);
         let backup = cloud_backup(&mut csprng, cbk.clone(), &kp).expect("backup");
         let mut bm = backup.clone();
         bm.sealed_secret[0] ^= 1;

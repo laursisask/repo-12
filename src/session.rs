@@ -8,7 +8,7 @@ use crate::{
     error::Error,
     rpc::{ChainIdErrorType, DoubleSignErrorType, Request, Response},
 };
-use ed25519_dalek::{Keypair, Signer};
+use ed25519_consensus::SigningKey;
 use std::time::Instant;
 use tendermint_proto::privval::PingResponse;
 use tracing::{debug, error, info};
@@ -22,7 +22,7 @@ pub struct Session<S: PersistStateSync> {
     connection: Box<dyn Connection>,
 
     /// consensus signing key
-    signing_key: Keypair,
+    signing_key: SigningKey,
 
     /// consensus state
     state: State,
@@ -39,7 +39,7 @@ impl<S: PersistStateSync> Session<S> {
     pub fn new(
         config: ValidatorConfig,
         connection: Box<dyn Connection>,
-        signing_key: Keypair,
+        signing_key: SigningKey,
         state: State,
         state_syncer: S,
     ) -> Self {
@@ -196,7 +196,10 @@ impl<S: PersistStateSync> Session<S> {
                 if self.check_chain_id(&req.chain_id).is_err() {
                     Response::invalid_chain_id(ChainIdErrorType::Pubkey, &req.chain_id)
                 } else {
-                    Response::PublicKey(self.signing_key.public.into())
+                    let pubkey = self.signing_key.verification_key().to_bytes();
+                    Response::PublicKey(
+                        tendermint::PublicKey::from_raw_ed25519(&pubkey).expect("public key"),
+                    )
                 }
             }
         };

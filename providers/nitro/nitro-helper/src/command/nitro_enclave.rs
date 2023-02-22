@@ -92,11 +92,11 @@ fn run_enclave_daemon(
 ) -> Result<EnclaveRunInfo, String> {
     let mut cmd = Command::new("nitro-cli");
     cmd.arg("run-enclave")
-        .args(&["--eif-path", image_path])
-        .args(&["--cpu-count", &format!("{}", cpu_count)])
-        .args(&["--memory", &format!("{}", memory_mib)]);
+        .args(["--eif-path", image_path])
+        .args(["--cpu-count", &format!("{}", cpu_count)])
+        .args(["--memory", &format!("{}", memory_mib)]);
     if let Some(cid) = cid {
-        cmd.args(&["--cid", &cid.to_string()]);
+        cmd.args(["--cid", &cid.to_string()]);
     }
     let output = cmd
         .output()
@@ -142,7 +142,7 @@ pub fn stop_enclave(cid: Option<String>) -> Result<EnclaveTerminateInfo, String>
     let mut cmd = Command::new("nitro-cli");
     cmd.arg("terminate-enclave");
     if let Some(id) = cid {
-        cmd.args(&["--enclave-id", &id]);
+        cmd.args(["--enclave-id", &id]);
     } else {
         cmd.arg("--all");
     }
@@ -171,8 +171,8 @@ pub fn run_vsock_proxy(opt: &VSockProxyOpt, stop_receiver: Receiver<()>) -> Resu
         return Ok(());
     }
     let mut child = Command::new("vsock-proxy")
-        .args(&["--num_workers", &format!("{}", opt.num_workers)])
-        .args(&["--config", &opt.config_file])
+        .args(["--num_workers", &format!("{}", opt.num_workers)])
+        .args(["--config", &opt.config_file])
         .arg(opt.local_port.to_string())
         .arg(&opt.remote_addr)
         .arg(opt.remote_port.to_string())

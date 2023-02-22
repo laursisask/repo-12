@@ -270,7 +270,7 @@ dependencies = [
  "aws-smithy-http",
  "form_urlencoded",
  "hex",
- "hmac 0.12.1",
+ "hmac",
  "http",
  "once_cell",
  "percent-encoding",
@@ -789,16 +789,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "crypto-mac"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bff07008ec701e8028e2ceb8f83f0e4274ee62bd2dbdc4fefff2e9a91824081a"
-dependencies = [
- "generic-array",
- "subtle",
-]
-
-[[package]]
 name = "ctr"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -827,6 +817,19 @@ dependencies = [
  "digest 0.9.0",
  "rand_core 0.5.1",
  "subtle",
+ "zeroize",
+]
+
+[[package]]
+name = "curve25519-dalek-ng"
+version = "4.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1c359b7249347e46fb28804470d071c921156ad62b3eef5d34e2ba867533dec8"
+dependencies = [
+ "byteorder",
+ "digest 0.9.0",
+ "rand_core 0.6.4",
+ "subtle-ng",
  "zeroize",
 ]
 
@@ -901,16 +904,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "ed25519-dalek"
-version = "1.0.1"
-source = "git+https://github.com/crypto-com/ed25519-dalek?rev=5e6c9362ff33c2bbfe189a55e44fd2d68b463227#5e6c9362ff33c2bbfe189a55e44fd2d68b463227"
+name = "ed25519-consensus"
+version = "2.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3c8465edc8ee7436ffea81d21a019b16676ee3db267aa8d5a8d729581ecf998b"
 dependencies = [
- "curve25519-dalek",
- "ed25519",
- "rand",
+ "curve25519-dalek-ng",
+ "hex",
+ "rand_core 0.6.4",
  "serde",
- "serde_bytes",
  "sha2 0.9.9",
+ "thiserror",
  "zeroize",
 ]
 
@@ -1285,22 +1289,11 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "hkdf"
-version = "0.10.0"
+version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "51ab2f639c231793c5f6114bdb9bbe50a7dbbfcd7c7c6bd8475dec2d991e964f"
+checksum = "791a029f6b9fc27657f6f188ec6e5e43f6911f6f878e0dc5501396e09809d437"
 dependencies = [
- "digest 0.9.0",
- "hmac 0.10.1",
-]
-
-[[package]]
-name = "hmac"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1441c6b1e930e2817404b5046f1f989899143a12bf92de603b69f4e0aee1e15"
-dependencies = [
- "crypto-mac",
- "digest 0.9.0",
+ "hmac",
 ]
 
 [[package]]
@@ -2755,6 +2748,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "subtle-ng"
+version = "2.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "734676eb262c623cec13c3155096e08d1f8f29adce39ba17948b18dad1e54142"
+
+[[package]]
 name = "syn"
 version = "0.15.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2819,13 +2818,14 @@ dependencies = [
 
 [[package]]
 name = "tendermint"
-version = "0.28.0"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c518c082146825f10d6f9a32159ae46edcfd7dae8ac630c8067594bb2a784d72"
+checksum = "0bb661ab5325af3741b7c37e81ce4bddbf9fdd4e2fb602357843becc8f235041"
 dependencies = [
  "bytes 1.2.1",
+ "digest 0.10.5",
  "ed25519",
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "futures 0.3.21",
  "num-traits",
@@ -2836,7 +2836,7 @@ dependencies = [
  "serde_bytes",
  "serde_json",
  "serde_repr",
- "sha2 0.9.9",
+ "sha2 0.10.6",
  "signature",
  "subtle",
  "subtle-encoding",
@@ -2847,9 +2847,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-config"
-version = "0.28.0"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6f58b86374e3bcfc8135770a6c55388fce101c00de4a5f03224fa5830c9240b7"
+checksum = "44e259436c7b92d2c35b78d0fcdd56985d9ffa0cc1245601a7f4d1ec0bbe8bef"
 dependencies = [
  "flex-error",
  "serde",
@@ -2861,13 +2861,13 @@ dependencies = [
 
 [[package]]
 name = "tendermint-p2p"
-version = "0.28.0"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0a318b96ad4fb89cc5428528dddbbc0cbf06e2462206d0ae1054b4a704232e4b"
+checksum = "2197b93b9684e056b92ef51d97eb88e8ae3647b827fe896b37256a2ae99816f6"
 dependencies = [
  "aead 0.4.3",
  "chacha20poly1305",
- "ed25519-dalek",
+ "ed25519-consensus",
  "eyre",
  "flex-error",
  "flume",
@@ -2875,7 +2875,7 @@ dependencies = [
  "merlin",
  "prost",
  "rand_core 0.5.1",
- "sha2 0.9.9",
+ "sha2 0.10.6",
  "signature",
  "subtle",
  "tendermint",
@@ -2887,9 +2887,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-proto"
-version = "0.28.0"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "890f1fb6dee48900c85f0cdf711ebf130e505ac09ad918cee5c34ed477973b05"
+checksum = "8c2e8dc89de3ab71cf63adcc71eb76200fae5a9ba7afd659fee54e0810beac8f"
 dependencies = [
  "bytes 1.2.1",
  "flex-error",
@@ -2905,9 +2905,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-std-ext"
-version = "0.28.0"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a1bcf62a189bd1edafc998517b382387acd8bb6a5ecda444e2f7f33a8b9fcf0a"
+checksum = "a03322870b8b10b2fe83aa757921f5600432d43cf70beb7e6e2762c33a6d33e9"
 
 [[package]]
 name = "termcolor"
@@ -2916,6 +2916,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bab24d30b911b2376f3a13cc2cd443142f0c81dda04c118693e35b3835757755"
 dependencies = [
  "winapi-util",
+]
+
+[[package]]
+name = "thiserror"
+version = "1.0.38"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a9cd18aa97d5c45c6603caea1da6628790b37f7a34b6ca89522331c5180fed0"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.38"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1fb327af4685e4d03fa8cbcf1716380da910eeb2bb8be417e7f9fd3fb164f36f"
+dependencies = [
+ "proc-macro2 1.0.47",
+ "quote 1.0.20",
+ "syn 1.0.104",
 ]
 
 [[package]]
@@ -2974,7 +2994,7 @@ checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 name = "tmkms-light"
 version = "0.4.2"
 dependencies = [
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "prost",
  "serde",
@@ -2993,7 +3013,7 @@ dependencies = [
  "aes",
  "aes-gcm-siv",
  "base64 0.21.0",
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "quickcheck",
  "quickcheck_macros",
@@ -3021,7 +3041,7 @@ dependencies = [
  "clap",
  "dcap-ql",
  "ed25519",
- "ed25519-dalek",
+ "ed25519-consensus",
  "enclave-runner",
  "flex-error",
  "rsa",
@@ -3047,7 +3067,7 @@ version = "0.4.2"
 dependencies = [
  "aws-ne-sys",
  "aws-nitro-enclaves-nsm-api",
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "nix 0.26.2",
  "rand_core 0.6.4",
@@ -3073,7 +3093,7 @@ dependencies = [
  "aws-credential-types",
  "clap",
  "ctrlc",
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "nix 0.26.2",
  "serde",
@@ -3097,7 +3117,7 @@ name = "tmkms-softsign"
 version = "0.4.2"
 dependencies = [
  "clap",
- "ed25519-dalek",
+ "ed25519-consensus",
  "flex-error",
  "rand_core 0.6.4",
  "serde",

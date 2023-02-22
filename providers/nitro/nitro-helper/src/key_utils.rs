@@ -1,7 +1,7 @@
 use crate::shared::AwsCredentials;
 use crate::shared::{NitroKeygenConfig, NitroKeygenResponse, NitroRequest, NitroResponse};
 
-use ed25519_dalek::PublicKey;
+use ed25519_consensus::VerificationKey;
 use std::{fs::OpenOptions, io::Write, os::unix::fs::OpenOptionsExt, path::Path};
 use tmkms_light::utils::{read_u16_payload, write_u16_payload};
 use vsock::VsockAddr;
@@ -43,7 +43,7 @@ pub fn generate_key(
     region: &str,
     credentials: AwsCredentials,
     kms_key_id: String,
-) -> Result<(PublicKey, Vec<u8>), String> {
+) -> Result<(VerificationKey, Vec<u8>), String> {
     let keygen_request = NitroKeygenConfig {
         credentials,
         kms_key_id,
@@ -78,7 +78,7 @@ pub fn generate_key(
         .and_then(|mut file| file.write_all(&resp.encrypted_secret))
         .map_err(|e| format!("couldn't write `{}`: {}", path.as_ref().display(), e))?;
     Ok((
-        PublicKey::from_bytes(&resp.public_key)
+        VerificationKey::try_from(resp.public_key.as_slice())
             .map_err(|e| format!("Invalid pubkey key: {:?}", e))?,
         resp.attestation_doc,
     ))

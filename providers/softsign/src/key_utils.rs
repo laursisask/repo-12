@@ -7,9 +7,9 @@ use std::{
     path::Path,
 };
 
-use ed25519_dalek as ed25519;
-use ed25519_dalek::SECRET_KEY_LENGTH;
-use rand_core::{OsRng, RngCore};
+use ed25519::SigningKey;
+use ed25519_consensus as ed25519;
+use rand_core::OsRng;
 use subtle_encoding::base64;
 use tmkms_light::error::{io_error_wrap, Error};
 use zeroize::Zeroizing;
@@ -39,14 +39,13 @@ pub fn load_base64_secret(path: impl AsRef<Path>) -> Result<Zeroizing<Vec<u8>>, 
 }
 
 /// Load a Base64-encoded Ed25519 secret key
-pub fn load_base64_ed25519_key(path: impl AsRef<Path>) -> Result<ed25519::Keypair, Error> {
+pub fn load_base64_ed25519_key(path: impl AsRef<Path>) -> Result<ed25519::SigningKey, Error> {
     let key_bytes = load_base64_secret(path)?;
 
     let secret =
-        ed25519::SecretKey::from_bytes(&key_bytes).map_err(|_e| Error::invalid_key_error())?;
+        ed25519::SigningKey::try_from(&key_bytes[..]).map_err(|_e| Error::invalid_key_error())?;
 
-    let public = ed25519::PublicKey::from(&secret);
-    Ok(ed25519::Keypair { secret, public })
+    Ok(secret)
 }
 
 /// Store Base64-encoded secret data at the given path
@@ -71,7 +70,6 @@ pub fn write_base64_secret(path: impl AsRef<Path>, data: &[u8]) -> Result<(), Er
 /// Generate a Secret Connection key at the given path
 #[allow(clippy::explicit_auto_deref)]
 pub fn generate_key(path: impl AsRef<Path>) -> Result<(), Error> {
-    let mut secret_key = Zeroizing::new([0u8; SECRET_KEY_LENGTH]);
-    OsRng.fill_bytes(&mut *secret_key);
-    write_base64_secret(path, &*secret_key)
+    let secret_key = SigningKey::new(OsRng);
+    write_base64_secret(path, &secret_key.as_bytes()[..])
 }

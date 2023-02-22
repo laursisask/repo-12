@@ -38,7 +38,7 @@ pub fn keywrap(
         .map_err(|e| format!("state persistence error: {:?}", e))?;
     let enclave_args: Vec<&[u8]> = vec![request_bytes.as_ref(), log_level.as_bytes()];
     let runner = TmkmsSgxSigner::launch_enclave_app(
-        &enclave_path,
+        enclave_path,
         None,
         state_syncer,
         state_stream,
@@ -67,8 +67,8 @@ pub fn keywrap(
                 .map_err(|e| format!("failed to write wrapping key: {:?}", e))?;
             if let Some(quote) = quote {
                 let claim_payload = get_claim(&wrap_pub_key);
-                let encoded_claim = general_purpose::URL_SAFE.encode(&claim_payload);
-                let encoded_quote = general_purpose::URL_SAFE.encode(&quote);
+                let encoded_claim = general_purpose::URL_SAFE.encode(claim_payload);
+                let encoded_quote = general_purpose::URL_SAFE.encode(quote);
                 print!("{{\"quote\": \"{}\",", encoded_quote);
                 println!(
                     "\"runtimeData\": {{ \"data\": \"{}\", \"dataType\": \"Binary\" }}}}",
@@ -166,8 +166,9 @@ pub fn init(
         .ok_or_else(|| "failed to generate consensus key".to_owned())?;
     config::write_sealed_file(config.sealed_consensus_key_path, &sealed_key_data)
         .map_err(|e| format!("failed to write consensus key: {:?}", e))?;
-    let public_key = ed25519_dalek::PublicKey::from_bytes(&sealed_key_data.seal_key_request.keyid)
-        .map_err(|e| format!("invalid keyid: {:?}", e))?;
+    let public_key =
+        ed25519_consensus::VerificationKey::try_from(&sealed_key_data.seal_key_request.keyid[..])
+            .map_err(|e| format!("invalid keyid: {:?}", e))?;
     print_pubkey(bech32_prefix, pubkey_display, public_key);
     let base_backup_path = key_backup_data_path.unwrap_or_else(|| "".into());
     if let Some(bkp) = cloud_backup_key_data {
@@ -340,9 +341,10 @@ pub fn recover(recover_config: RecoverConfig, log_level: String) -> Result<(), S
         if recover_config.recover_consensus_key {
             config::write_sealed_file(config.sealed_consensus_key_path, &sealed_key_data)
                 .map_err(|e| format!("failed to write consensus key: {:?}", e))?;
-            let public_key =
-                ed25519_dalek::PublicKey::from_bytes(&sealed_key_data.seal_key_request.keyid)
-                    .map_err(|e| format!("ivalid keyid: {:?}", e))?;
+            let public_key = ed25519_consensus::VerificationKey::try_from(
+                &sealed_key_data.seal_key_request.keyid[..],
+            )
+            .map_err(|e| format!("ivalid keyid: {:?}", e))?;
             println!("recovered key");
             print_pubkey(
                 recover_config.bech32_prefix,

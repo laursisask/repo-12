@@ -3,8 +3,8 @@ mod state;
 
 use aws_nitro_enclaves_nsm_api::api::{Request, Response};
 use aws_nitro_enclaves_nsm_api::driver::{nsm_exit, nsm_init, nsm_process_request};
-use ed25519_dalek as ed25519;
-use ed25519_dalek::Keypair;
+use ed25519_consensus as ed25519;
+use ed25519_consensus::SigningKey;
 use rand_core::OsRng;
 use serde_bytes::ByteBuf;
 use std::io;
@@ -28,15 +28,13 @@ use zeroize::{Zeroize, Zeroizing};
 
 fn get_secret_connection(
     vsock_port: u32,
-    identity_key: &ed25519::Keypair,
+    identity_key: &ed25519::SigningKey,
     peer_id: Option<Id>,
 ) -> io::Result<Box<dyn Connection>> {
     let addr = VsockAddr::new(VSOCK_HOST_CID, vsock_port);
     let socket = vsock::VsockStream::connect(&addr)?;
     info!("KMS node ID: {}", PublicKey::from(identity_key));
-    // the `Clone` is not derived for Keypair
-    // TODO: https://github.com/dalek-cryptography/ed25519-dalek/issues/76
-    let identity_key = ed25519::Keypair::from_bytes(&identity_key.to_bytes()).unwrap();
+    let identity_key = identity_key.clone();
     let connection = SecretConnection::new(socket, identity_key, secret_connection::Version::V0_34)
         .map_err(|e| {
             error!("secret connection failed: {}", e);
@@ -70,7 +68,7 @@ fn get_secret_connection(
 /// keeps retrying with approx. 1 sec sleep until it manages to connect to tendermint privval endpoint
 pub fn get_connection(
     config: &NitroConfig,
-    id_keypair: Option<&ed25519::Keypair>,
+    id_keypair: Option<&ed25519::SigningKey>,
 ) -> Box<dyn Connection> {
     loop {
         let conn: io::Result<Box<dyn Connection>> = if let Some(ikp) = id_keypair {
@@ -116,10 +114,8 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
                 )
                 .map_err(|_e| Error::access_error())?,
             );
-            let secret = ed25519::SecretKey::from_bytes(&key_bytes)
+            let secret = ed25519::SigningKey::try_from(key_bytes.as_slice())
                 .map_err(|_e| Error::invalid_key_error())?;
-            let public = ed25519::PublicKey::from(&secret);
-            let keypair = ed25519::Keypair { secret, public };
             let id_keypair = if let Some(ref ciphertext) = config.sealed_id_key {
                 let id_key_bytes = Zeroizing::new(
                     aws_ne_sys::kms_decrypt(
@@ -131,14 +127,9 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
                     )
                     .map_err(|_e| Error::access_error())?,
                 );
-                let id_secret = ed25519::SecretKey::from_bytes(&id_key_bytes)
+                let id_secret = ed25519::SigningKey::try_from(id_key_bytes.as_slice())
                     .map_err(|_e| Error::invalid_key_error())?;
-                let id_public = ed25519::PublicKey::from(&id_secret);
-                let id_keypair = ed25519::Keypair {
-                    secret: id_secret,
-                    public: id_public,
-                };
-                Some(id_keypair)
+                Some(id_secret)
             } else {
                 None
             };
@@ -154,7 +145,7 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
                     max_height: config.max_height,
                 },
                 conn,
-                keypair,
+                secret,
                 state,
                 state_holder,
             );
@@ -167,10 +158,10 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
             }
         }
         Ok(NitroRequest::Keygen(keygen_config)) => {
-            let mut csprng = OsRng {};
-            let mut keypair = Keypair::generate(&mut csprng);
-            let public = keypair.public;
-            let pubkeyb64 = String::from_utf8(subtle_encoding::base64::encode(&public))
+            let csprng = OsRng {};
+            let mut keypair = SigningKey::new(csprng);
+            let public = keypair.verification_key();
+            let pubkeyb64 = String::from_utf8(subtle_encoding::base64::encode(public))
                 .map_err(|e| io_error_wrap("base64 encoding error".into(), e))?;
             let keyidb64 =
                 String::from_utf8(subtle_encoding::base64::encode(&keygen_config.kms_key_id))
@@ -187,7 +178,7 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
                 keygen_config.credentials.aws_secret_key.as_bytes(),
                 keygen_config.credentials.aws_session_token.as_bytes(),
                 keygen_config.kms_key_id.as_bytes(),
-                keypair.secret.as_bytes(),
+                keypair.as_bytes(),
             ) {
                 Ok(encrypted_secret) => {
                     let req = Request::Attestation {
@@ -212,7 +203,7 @@ pub fn entry(mut stream: VsockStream) -> Result<(), Error> {
                 }
                 Err(e) => Err(format!("{:?}", e)),
             };
-            keypair.secret.zeroize();
+            keypair.zeroize();
             let json = serde_json::to_string(&response).map_err(Error::serialization_error)?;
             write_u16_payload(&mut stream, json.as_bytes())
                 .map_err(|e| Error::io_error("failed to send keypair response".into(), e))?;

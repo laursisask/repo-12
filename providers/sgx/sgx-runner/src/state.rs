@@ -99,7 +99,7 @@ impl StateSyncer {
             .map_err(|e| StateError::sync_error(path.display().to_string(), e))?;
 
         state_file
-            .persist(&path)
+            .persist(path)
             .map_err(|e| StateError::sync_error(path.display().to_string(), e.error))?;
 
         debug!(

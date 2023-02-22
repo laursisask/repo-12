@@ -100,7 +100,7 @@ pub enum ChainIdErrorType {
 
 impl Response {
     /// signed vote
-    pub fn vote_response(vote: SignVoteRequest, signature: ed25519_dalek::Signature) -> Self {
+    pub fn vote_response(vote: SignVoteRequest, signature: ed25519_consensus::Signature) -> Self {
         let mut vote = vote.vote;
         vote.signature = Some(signature.into());
         Response::SignedVote(SignedVoteResponse {
@@ -112,7 +112,7 @@ impl Response {
     /// signed proposal
     pub fn proposal_response(
         proposal: SignProposalRequest,
-        signature: ed25519_dalek::Signature,
+        signature: ed25519_consensus::Signature,
     ) -> Self {
         let mut proposal = proposal.proposal;
         proposal.signature = Some(signature.into());

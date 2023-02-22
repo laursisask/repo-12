@@ -8,7 +8,7 @@ edition = "2021"
 aes = "0.8"
 aes-gcm-siv = "0.11"
 base64 = "0.21"
-ed25519-dalek = "1"
+ed25519-consensus = "2"
 flex-error = "0.4"
 rand = "0.8"
 rsa = "0.7"
@@ -17,7 +17,7 @@ sha2 = "0.10"
 sgx-isa = { version = "0.4", features = ["sgxstd"] }
 subtle = "2"
 subtle-encoding = "0.5"
-tendermint-p2p = "0.28"
+tendermint-p2p = "0.29"
 tmkms-light-sgx-runner = { path = "../sgx-runner" }
 tmkms-light = { path = "../../.." }
 tracing = "0.1"

@@ -27,7 +27,7 @@ impl FromStr for PubkeyDisplay {
 pub fn print_pubkey(
     bech32_prefix: Option<String>,
     ptype: Option<PubkeyDisplay>,
-    public: ed25519_dalek::PublicKey,
+    public: ed25519_consensus::VerificationKey,
 ) {
     match ptype {
         Some(PubkeyDisplay::Bech32) => {
@@ -44,7 +44,9 @@ pub fn print_pubkey(
                 "public key: {}",
                 String::from_utf8(subtle_encoding::base64::encode(public)).unwrap()
             );
-            let id = tendermint::node::Id::from(public);
+            let pk = tendermint::public_key::Ed25519::try_from(&public.as_bytes()[..])
+                .expect("public key");
+            let id = tendermint::node::Id::from(pk);
             println!("address: {}", id);
         }
     }

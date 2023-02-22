@@ -5,7 +5,7 @@ mod state;
 
 /// helpers for cloud deployments (where CPU affinitity isn't guaranteed)
 mod cloud;
-use ed25519_dalek::Keypair;
+use ed25519_consensus::SigningKey;
 use rand::rngs::OsRng;
 use sgx_isa::{Report, Targetinfo};
 use std::{io, net::TcpStream, thread, time::Duration};
@@ -118,7 +118,7 @@ pub fn entry(mut host_response: TcpStream, request: SgxInitRequest) -> io::Resul
             }
         }
         SgxInitRequest::KeyGen { cloud_backup } => {
-            let kp = Keypair::generate(&mut csprng);
+            let kp = SigningKey::new(csprng);
             let cloud_backup_key_data =
                 cloud_backup.and_then(|key| cloud::cloud_backup(&mut csprng, key, &kp).ok());
             if let Ok(sealed_key_data) = keypair_seal::seal(&mut csprng, &kp) {
@@ -267,14 +267,16 @@ mod tests {
     #[test]
     fn test_unseal() {
         let mut csprng = OsRng {};
-        let kp = Keypair::generate(&mut csprng);
+        let kp = SigningKey::new(csprng);
         let sealed_data = keypair_seal::seal(&mut csprng, &kp).unwrap();
         let mut mangled_sealed_data = sealed_data.clone();
         mangled_sealed_data.nonce[0] ^= 1;
         assert!(keypair_seal::unseal(&mangled_sealed_data).is_err());
         assert_eq!(
-            keypair_seal::unseal(&sealed_data).unwrap().public,
-            kp.public
+            keypair_seal::unseal(&sealed_data)
+                .unwrap()
+                .verification_key(),
+            kp.verification_key()
         );
     }
 }

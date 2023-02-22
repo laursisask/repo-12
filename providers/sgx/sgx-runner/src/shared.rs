@@ -81,7 +81,7 @@ pub type PublicKey = [u8; 32];
 pub struct CloudBackupKeyData {
     pub nonce: AesGcmSivNonce,
     pub sealed_secret: Ciphertext,
-    pub public_key: ed25519_dalek::PublicKey,
+    pub public_key: ed25519_consensus::VerificationKey,
 }
 
 /// configuration for direct remote communication with TM
@@ -178,7 +178,7 @@ impl fmt::Display for CloudBackupSeal {
             &self.wrapped_cloud_sealing_key[..],
         ]
         .concat();
-        let full_str = general_purpose::STANDARD.encode(&full);
+        let full_str = general_purpose::STANDARD.encode(full);
         write!(f, "{}", full_str)
     }
 }
@@ -248,8 +248,8 @@ pub enum SgxInitResponse {
 pub fn get_claim(wrap_pub_key: &rsa::RsaPublicKey) -> String {
     let n = wrap_pub_key.n().to_bytes_be();
     let e = wrap_pub_key.e().to_bytes_be();
-    let encoded_n = general_purpose::URL_SAFE.encode(&n);
-    let encoded_e = general_purpose::URL_SAFE.encode(&e);
+    let encoded_n = general_purpose::URL_SAFE.encode(n);
+    let encoded_e = general_purpose::URL_SAFE.encode(e);
     format!(
         "{{\"kid\":\"wrapping-key\",\"kty\":\"RSA\",\"e\":\"{}\",\"n\":\"{}\"}}",
         encoded_e, encoded_n
