@@ -2851,9 +2851,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-p2p"
-version = "0.29.0"
+version = "0.29.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2197b93b9684e056b92ef51d97eb88e8ae3647b827fe896b37256a2ae99816f6"
+checksum = "01259d12b3d8a203d4e537da79446d7a43eb952dc907e1743029b1503be7ea81"
 dependencies = [
  "aead 0.4.3",
  "chacha20poly1305",
@@ -2895,9 +2895,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-std-ext"
-version = "0.29.0"
+version = "0.29.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a03322870b8b10b2fe83aa757921f5600432d43cf70beb7e6e2762c33a6d33e9"
+checksum = "0b3f1ffdc1f21e7d98e06d4314cfa5006993d2a91992463ff5143b387779cfb6"
 
 [[package]]
 name = "termcolor"
