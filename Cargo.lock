@@ -2799,9 +2799,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint"
-version = "0.29.1"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cda53c85447577769cdfc94c10a56f34afef2c00e4108badb57fce6b1a0c75eb"
+checksum = "b90c3c1e32352551f0f1639ce765e4c66ce250c733d4b9ba1aff81130437465c"
 dependencies = [
  "bytes 1.2.1",
  "digest 0.10.5",
@@ -2828,9 +2828,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-config"
-version = "0.29.1"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dd4eb17618539c95b48501e71ad3c7f4bf047af388aa30dcf3e000782b05abfd"
+checksum = "74efd33bcb53413b77cbe90ccb2cf0403930a5c1f300725deb87a61f7c4fab90"
 dependencies = [
  "flex-error",
  "serde",
@@ -2842,9 +2842,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-p2p"
-version = "0.29.1"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01259d12b3d8a203d4e537da79446d7a43eb952dc907e1743029b1503be7ea81"
+checksum = "761863c3778fbde7d93ee79441e0b22d46e1b9495e92c80a8611c08e6e1a861a"
 dependencies = [
  "aead 0.4.3",
  "chacha20poly1305",
@@ -2868,9 +2868,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-proto"
-version = "0.29.1"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c943f78c929cdf14553842f705f2c30324bc35b9179caaa5c9b80620f60652e6"
+checksum = "e553ed65874c3f35a71eb60d255edfea956274b5af37a0297d54bba039fe45e3"
 dependencies = [
  "bytes 1.2.1",
  "flex-error",
@@ -2886,9 +2886,9 @@ dependencies = [
 
 [[package]]
 name = "tendermint-std-ext"
-version = "0.29.1"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0b3f1ffdc1f21e7d98e06d4314cfa5006993d2a91992463ff5143b387779cfb6"
+checksum = "1a2cba83c38dacc2af10414a6d08359ebd057fb567494e8f95e4a97253e55c32"
 
 [[package]]
 name = "termcolor"

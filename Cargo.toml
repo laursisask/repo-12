@@ -13,9 +13,9 @@ prost = "0.11"
 serde = { version = "1", features = ["serde_derive"] }
 serde_json = "1"
 subtle-encoding = { version = "0.5", features = ["bech32-preview"] }
-tendermint = "0.29"
-tendermint-proto = "0.29"
-tendermint-p2p = "0.29"
+tendermint = "0.30"
+tendermint-proto = "0.30"
+tendermint-p2p = "0.30"
 tracing = "0.1"
 
 [workspace]
