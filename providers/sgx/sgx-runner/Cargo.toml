@@ -7,7 +7,7 @@ edition = "2021"
 [dependencies]
 base64 = "0.21"
 serde = { version = "1", features = ["derive"] }
-ed25519 = { version = "1", features = ["serde"] }
+ed25519 = { version = "2", features = ["serde"] }
 ed25519-consensus =  { version = "2", features = ["serde"] }
 rsa = { version = "0.7", features = ["serde", "std"] }
 sgx-isa = { version = "0.4", features = ["serde"] }
