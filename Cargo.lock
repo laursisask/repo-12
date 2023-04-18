@@ -834,9 +834,9 @@ dependencies = [
 
 [[package]]
 name = "dcap-ql"
-version = "0.3.4"
+version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "609f06e7761b25f2588320f61ce98260eeae6527b521c4861d6433366ebeabf7"
+checksum = "748bb654a716b7f26ffdae746f3eacd22d72bc1858cef5b582bb68c90bde533e"
 dependencies = [
  "byteorder",
  "dcap-ql-sys",
