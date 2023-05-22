@@ -2,14 +2,11 @@ package slack
 
 import (
 	"context"
-	"errors"
 	"fmt"
-	"math/rand"
 	"strings"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/slack-go/slack"
 )
@@ -57,6 +54,7 @@ func resourceSlackUserGroup() *schema.Resource {
 		},
 
 		Timeouts: &schema.ResourceTimeout{
+			//nolint:gomnd
 			Read: schema.DefaultTimeout(5 * time.Minute),
 		},
 	}
@@ -84,7 +82,7 @@ func resourceSlackUserGroupCreate(ctx context.Context, d *schema.ResourceData, m
 		if err.Error() != "name_already_exists" && err.Error() != "handle_already_exists" {
 			return diag.Errorf("could not create usergroup %s: %s", name, err)
 		}
-		group, err := findUserGroupByName(ctx, name, true, m)
+		group, err := findUserGroupByName(ctx, d, m, name, true)
 		if err != nil {
 			return diag.Errorf("could not find usergroup %s: %s", name, err)
 		}
@@ -113,37 +111,20 @@ func resourceSlackUserGroupCreate(ctx context.Context, d *schema.ResourceData, m
 	return resourceSlackUserGroupRead(ctx, d, m)
 }
 
-func resourceSlackUserGroupRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	client := m.(*slack.Client)
+func resourceSlackUserGroupRead(
+	ctx context.Context,
+	d *schema.ResourceData,
+	m interface{},
+) diag.Diagnostics {
 	id := d.Id()
 
-	var (
-		diags      diag.Diagnostics
-		userGroups []slack.UserGroup
-		backoff    = &Backoff{Base: time.Second, Cap: 15 * time.Second}
-	)
-	err := resource.RetryContext(ctx, d.Timeout(schema.TimeoutRead), func() *resource.RetryError {
-		var (
-			err   error
-			rlerr *slack.RateLimitedError
-		)
+	userGroups, err := ListUserGroupsWithContext(ctx, d, m, true)
 
-		userGroups, err = client.GetUserGroupsContext(ctx, slack.GetUserGroupsOptionIncludeUsers(true))
-
-		if errors.As(err, &rlerr) {
-			backoff.Sleep(ctx)
-			return resource.RetryableError(err)
-		}
-
-		if err != nil {
-			return resource.NonRetryableError(fmt.Errorf("couldn't get usergroups: %w", err))
-		}
-
-		return nil
-	})
 	if err != nil {
-		return diag.FromErr(fmt.Errorf("couldn't get usergroups: %w", err))
+		return diag.FromErr(err)
 	}
+
+	var diags diag.Diagnostics
 
 	for _, userGroup := range userGroups {
 		if userGroup.ID == id {
@@ -154,35 +135,20 @@ func resourceSlackUserGroupRead(ctx context.Context, d *schema.ResourceData, m i
 		Severity: diag.Warning,
 		Summary:  fmt.Sprintf("usergroup with ID %s not found, removing from state", id),
 	})
+
 	d.SetId("")
+
 	return diags
 }
 
-type Backoff struct {
-	Attempt int
-	Base    time.Duration
-	Cap     time.Duration
-}
-
-func (b *Backoff) Sleep(ctx context.Context) {
-	b.Attempt++
-
-	wait := b.Base * (2 << b.Attempt)
-	if wait > b.Cap {
-		wait = b.Cap
-	}
-
-	wait = time.Duration(rand.Int63n(int64(wait)))
-
-	select {
-	case <-time.After(wait):
-	case <-ctx.Done():
-	}
-}
-
-func findUserGroupByName(ctx context.Context, name string, includeDisabled bool, m interface{}) (slack.UserGroup, error) {
-	client := m.(*slack.Client)
-	userGroups, err := client.GetUserGroupsContext(ctx, slack.GetUserGroupsOptionIncludeDisabled(includeDisabled), slack.GetUserGroupsOptionIncludeUsers(true))
+func findUserGroupByName(
+	ctx context.Context,
+	d *schema.ResourceData,
+	m interface{},
+	name string,
+	includeDisabled bool,
+) (slack.UserGroup, error) {
+	userGroups, err := ListUserGroupsWithContext(ctx, d, m, includeDisabled)
 	if err != nil {
 		return slack.UserGroup{}, err
 	}
@@ -196,9 +162,14 @@ func findUserGroupByName(ctx context.Context, name string, includeDisabled bool,
 	return slack.UserGroup{}, fmt.Errorf("could not find usergroup %s", name)
 }
 
-func findUserGroupByID(ctx context.Context, id string, includeDisabled bool, m interface{}) (slack.UserGroup, error) {
-	client := m.(*slack.Client)
-	userGroups, err := client.GetUserGroupsContext(ctx, slack.GetUserGroupsOptionIncludeDisabled(includeDisabled), slack.GetUserGroupsOptionIncludeUsers(true))
+func findUserGroupByID(
+	ctx context.Context,
+	d *schema.ResourceData,
+	m interface{},
+	id string,
+	includeDisabled bool,
+) (slack.UserGroup, error) {
+	userGroups, err := ListUserGroupsWithContext(ctx, d, m, includeDisabled)
 	if err != nil {
 		return slack.UserGroup{}, err
 	}

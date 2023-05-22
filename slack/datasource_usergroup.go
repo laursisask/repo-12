@@ -56,7 +56,7 @@ func dataSourceUserGroupRead(ctx context.Context, d *schema.ResourceData, m inte
 	var group *slack.UserGroup
 
 	if name, ok := d.GetOk("name"); ok {
-		u, err := findUserGroupByName(ctx, name.(string), false, m)
+		u, err := findUserGroupByName(ctx, d, m, name.(string), false)
 		if err != nil {
 			return diag.FromErr(err)
 		}
@@ -64,7 +64,7 @@ func dataSourceUserGroupRead(ctx context.Context, d *schema.ResourceData, m inte
 	}
 
 	if id, ok := d.GetOk("usergroup_id"); ok {
-		u, err := findUserGroupByID(ctx, id.(string), false, m)
+		u, err := findUserGroupByID(ctx, d, m, id.(string), false)
 		if err != nil {
 			return diag.FromErr(err)
 		}
