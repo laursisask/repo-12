@@ -68,9 +68,9 @@
      color: #424242 !important;
  }
 
- .explore>div>div>div {
+ .unleash-power>div>div>div {
      padding: 0px 15px !important;
-     width: 42% !important;
+     width: 33rem !important;
  }
 
  .explore>div>div {
@@ -126,9 +126,9 @@
  }
 
  .inAddOn {
-     width: 10%;
+     width: 12%;
      position: relative;
-     left: 46%;
+     left: 45%;
      bottom: 5%;
  }
 
@@ -215,6 +215,10 @@
      max-width: 65% !important;
  }
 
+ .support-tools h3 {
+     white-space: nowrap !important;
+ }
+
  .space-land h3,
  .drive-land h3 {
      white-space: nowrap !important;
@@ -229,6 +233,7 @@
  .drive-land p,
  .space-land p {
      font-size: 11pt !important;
+     white-space: nowrap !important;
  }
 
  .space-land>div {
