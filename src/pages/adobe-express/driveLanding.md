@@ -14,6 +14,6 @@ Save and access your files
 
 ![Code Image](../images/code.jpg)
 
-## OneDrive 
+## OneDrive
 
 Save, edit, and share

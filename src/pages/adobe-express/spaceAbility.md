@@ -14,12 +14,12 @@ AI heatmap for your designs
 
 ![Code Image](../images/code.jpg)
 
-## Color blindness simulator 
+## Color blindness simulator
 
 Accessibility tool
 
 ![Code Image](../images/code.jpg)
 
-## Stability 
+## Stability
 
 Generate imagery with AI

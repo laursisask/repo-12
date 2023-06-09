@@ -85,4 +85,4 @@ Give users of alll skills levels the power to edit and create by embedding Adobe
 Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK. Check them out:
 
 - [Add-ons](https://adobe.io)
-- [Embed SDK](https://developer.adobe.com/embed-sdk) 
+- [Embed SDK](https://developer.adobe.com/embed-sdk)
