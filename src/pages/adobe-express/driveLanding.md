@@ -1,4 +1,4 @@
-<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#427dcd" className="drive-land" />
+<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="drive-land" />
 
 ![Code Image](../images/code.jpg)
 

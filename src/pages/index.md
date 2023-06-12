@@ -16,11 +16,11 @@ Build add-ons for <a href="https://express.adobe.com">Adobe Express</a> or embed
 
 homeExpressLandingPage
 
-<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power" position="left" />
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power add-ons-intro" position="left" />
 
 ### Unleash the power of Adobe Express with add-ons.
 
-Add-ons are applications that helps users add content to their pages, share their designs, and unloack their creative potential in new ways.
+Add-ons are applications that helps users add content to their pages, share their designs, and unlock their creative potential in new ways.
 
 ![Power of Adobe Express](./images/AddOn.png)
 
@@ -39,7 +39,7 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ### Bring Adobe Express functionality to your users.
 
-Give users of alll skills levels the power to edit and create by embedding Adobe Express features into your application.
+Give users of all skills levels the power to edit and create by embedding Adobe Express features into your application.
 
 ![Adobe Express functionality](./images/Embed.png)
 

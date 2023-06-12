@@ -69,12 +69,12 @@
  }
 
  .unleash-power>div>div>div {
-     padding: 0px 15px !important;
+     padding: 4% 4% !important;
      width: 33rem !important;
  }
 
  .explore>div>div {
-     width: 85% !important;
+     width: 90% !important;
      justify-content: center !important;
      margin: auto !important;
  }
@@ -98,6 +98,11 @@
      font-size: 35px !important;
  }
 
+ .add-ons-intro>div,
+ .features>div {
+     padding: 5% 1% !important;
+ }
+
  .announcement>div>div>div {
      width: 100%;
      text-align: center;
@@ -105,20 +110,16 @@
 
  .announcement>div,
  .exploreCapabilities>div {
-     padding: 5% 0 3% 0 !important;
+     padding: 4% 0 0 0 !important;
+ }
+
+ .inspiration>div {
+    padding: 0 !important;
  }
 
  .announcement>div>div>div>h3,
  .viewAddOn h3 {
      font-size: 35px !important;
- }
-
- .inspiration h3 {
-     color: #427dcd !important;
- }
-
- .features>div {
-     padding: 4% 0 !important;
  }
 
  .learnMoreWrapper>div {
@@ -211,9 +212,11 @@
      display: none !important;
  }
 
- .drive-land>div {
-     max-width: 65% !important;
- }
+
+.drive-land>div,
+.space-land>div {
+    max-width: 80% !important;
+}
 
  .support-tools h3 {
      white-space: nowrap !important;
@@ -221,23 +224,29 @@
 
  .space-land h3,
  .drive-land h3 {
-     white-space: nowrap !important;
-     font-size: 18px !important;
+     padding: 16px 16px 8px 16px;
+     font-size: 14px !important;
+     color: #2C2C2C;
  }
+
 
  .drive-land>div>div>div>div:first-child,
  .space-land>div>div>div>div:first-child {
-     width: 80px !important;
+     width: 102px !important;
+ }
+
+ .drive-land>div>div>div>div,
+ .space-land>div>div>div>div {
+    justify-content: unset;
+    padding: 0 0 0 16px !important;
  }
 
  .drive-land p,
  .space-land p {
-     font-size: 11pt !important;
-     white-space: nowrap !important;
- }
-
- .space-land>div {
-     max-width: 80% !important;
+     font-size: 14px !important;
+     padding: 0px 16px;
+     margin-top:0px !important;
+     color: #464646 !important;
  }
 
  .launchAddOn {
@@ -466,12 +475,6 @@
          position: relative;
          left: 45%;
          bottom: 5%;
-     }
-
-     .drive-land p,
-     .space-land p {
-         font-size: 10pt !important;
-         white-space: nowrap;
      }
 
      .support-tools>div {

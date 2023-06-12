@@ -1,4 +1,4 @@
-<MiniResourceCard slots="image,heading,text" repeat="4" theme="lightest" inRow="4" textColor="#427dcd" className="space-land " />
+<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="space-land " />
 
 ![Code Image](../images/code.jpg)
 
@@ -18,8 +18,8 @@ AI heatmap for your designs
 
 Accessibility tool
 
-![Code Image](../images/code.jpg)
+<!-- ![Code Image](../images/code.jpg)
 
 ## Stability
 
-Generate imagery with AI
+Generate imagery with AI -->
