@@ -1,0 +1,493 @@
+ /* adobe express  */
+
+ .add-ones-hero {
+     background: url('../images/Hero_BgImage.jpg') !important;
+     background-repeat: no-repeat;
+     background-size: cover !important;
+ }
+
+ .add-ones-hero>div {
+     width: 70% !important;
+     margin: 3% auto;
+     gap: 5%;
+ }
+
+ .add-ones-hero>div>div {
+     width: 50% !important;
+ }
+
+ .add-ones-hero>div>div:nth-child(2) {
+     display: flex;
+     justify-content: center;
+     margin: auto;
+ }
+
+ .add-ones-hero>div>div>h1 {
+     color: white;
+     font-family: inherit;
+ }
+
+ .add-ones-hero>div>div>p {
+     color: #F7DBFD;
+ }
+
+ .add-ones-hero>div>div>p>a {
+     text-decoration: underline !important;
+     color: white !important;
+ }
+
+ .adobe-express-hero a {
+     border-color: #F4DFF9 !important;
+     background: transparent !important;
+ }
+
+ .homeExpressLandingPage {
+     background-image: url('../images/Landingpage.png');
+     background-repeat: no-repeat;
+     background-size: contain;
+     width: 600px;
+     height: 400px;
+     background-position: bottom center !important;
+ }
+
+ .explore>div {
+     width: 70% !important;
+     margin: auto !important;
+     padding: 1% 0 !important;
+ }
+
+ .explore a {
+     border-color: #626262 !important;
+ }
+
+ .explore a>span {
+     color: #525252 !important;
+ }
+
+ .explore p {
+     color: #424242 !important;
+ }
+
+ .unleash-power>div>div>div {
+     padding: 4% 4% !important;
+     width: 33rem !important;
+ }
+
+ .explore>div>div {
+     width: 90% !important;
+     justify-content: center !important;
+     margin: auto !important;
+ }
+
+ .unleash-power>div>div>div>div>div>div:nth-child(2)>a {
+     border: none !important;
+     text-decoration: underline !important;
+     color: #427dcd !important;
+ }
+
+ .unleash-power>div>div>div>div>div>div:nth-child(2)>a:hover {
+     background-color: transparent !important;
+ }
+
+ .unleash-power>div>div>div>div>div>div:nth-child(2)>a>span>span {
+     color: #427dcd !important;
+     font-size: 16px !important;
+ }
+
+ .unleash-power h2 {
+     font-size: 35px !important;
+ }
+
+ .add-ons-intro>div,
+ .features>div {
+     padding: 5% 1% !important;
+ }
+
+ .announcement>div>div>div {
+     width: 100%;
+     text-align: center;
+ }
+
+ .announcement>div,
+ .exploreCapabilities>div {
+     padding: 4% 0 0 0 !important;
+ }
+
+ .inspiration>div {
+    padding: 0 !important;
+ }
+
+ .announcement>div>div>div>h3,
+ .viewAddOn h3 {
+     font-size: 35px !important;
+ }
+
+ .learnMoreWrapper>div {
+     width: 100% !important;
+ }
+
+ .inAddOn {
+     width: 12%;
+     position: relative;
+     left: 45%;
+     bottom: 5%;
+ }
+
+ .support-label>div,
+ .mini-card {
+     padding: 0 0 3% 0 !important;
+ }
+
+ .mini-card h3 {
+     font-size: large !important;
+     font-weight: 700 !important;
+ }
+
+ .mini-card>div {
+     padding: 10px !important;
+     gap: 5% !important;
+     width: 50% !important;
+     margin: auto !important;
+     max-width: 100% !important;
+ }
+
+ .mini-card>div>div {
+     display: flex !important;
+     justify-content: center !important;
+ }
+
+ .mini-card>div>div>div {
+     width: 100% !important;
+     margin: 0 !important;
+ }
+
+ .mini-card>div>div>div>div:nth-child(2) {
+     width: 200px !important;
+     padding: 0px 0 0 4% !important;
+     border: none !important;
+ }
+
+ .support-tools>div>div>div>div:first-child {
+     width: 32% !important;
+ }
+
+ .viewAddOn>div {
+     padding: 3% 0 !important;
+ }
+
+ .viewAddOn>div>div>div {
+     margin: auto !important;
+     text-align: center !important;
+ }
+
+ .viewAddOn>div>div>div>div:nth-child(3) {
+     display: flex !important;
+     justify-content: center !important;
+ }
+
+ .viewAddOn p {
+     color: #E2CAF1 !important;
+     font-size: 12pt !important;
+ }
+
+ .viewAddOn>div>div {
+     margin: auto !important;
+ }
+
+ .add-ones-hero>div>div:first-child>div>div>div:nth-child(2)>a>span>span,
+ .adobe-express-hero a>span>span,
+ .viewAddOn>div>div>div>div:nth-child(3)>div>div:nth-child(2)>a>span,
+ .viewAddOn>div>div>div>div:nth-child(3)>div>div:nth-child(2)>a>span>span,
+ .viewAddOn>div>div>div>div:nth-child(2)>div>div:nth-child(2)>a>span>span,
+ .viewAddOn>div>div>div>div:last-child>div>div:last-child>a>span>span {
+     color: white !important;
+ }
+
+ .viewAddOn>div>div>div>div:last-child {
+     display: flex !important;
+     justify-content: center !important;
+ }
+
+ .viewAddOn h3>span>a {
+     display: none !important;
+ }
+
+
+.drive-land>div,
+.space-land>div {
+    max-width: 80% !important;
+}
+
+ .support-tools h3 {
+     white-space: nowrap !important;
+ }
+
+ .space-land h3,
+ .drive-land h3 {
+     padding: 16px 16px 8px 16px;
+     font-size: 14px !important;
+     color: #2C2C2C;
+ }
+
+
+ .drive-land>div>div>div>div:first-child,
+ .space-land>div>div>div>div:first-child {
+     width: 102px !important;
+ }
+
+ .drive-land>div>div>div>div,
+ .space-land>div>div>div>div {
+    justify-content: unset;
+    padding: 0 0 0 16px !important;
+ }
+
+ .drive-land p,
+ .space-land p {
+     font-size: 14px !important;
+     padding: 0px 16px;
+     margin-top:0px !important;
+     color: #464646 !important;
+ }
+
+ .launchAddOn {
+     background-color: white !important;
+ }
+
+ .launchAddOn>div>div {
+     width: 100% !important;
+     display: flex !important;
+     justify-content: center !important;
+ }
+
+ .launchAddOn>div>div>div {
+     width: fit-content !important;
+ }
+
+ .launchAddOn a {
+     background-color: transparent !important;
+     border-color: black !important;
+ }
+
+ .launchAddOn a>span>span {
+     color: black !important;
+ }
+
+ .connect-team {
+     background-color: #f8f8f8 !important;
+ }
+
+ .connect-team>div>div {
+     padding: 0 0 5% 0 !important;
+ }
+
+ @media screen and (max-width:2000px) {
+     .explore>div>div {
+         width: 100% !important;
+     }
+ }
+
+ @media screen and (min-width:320px) and (max-width:1024px) {
+
+     .explore>div {
+         padding: 5% 0 !important;
+     }
+
+     .add-ones-hero>div>div,
+     .add-ones-hero>div,
+     .explore>div>div>div {
+         width: 100% !important;
+     }
+
+     .add-ones-hero>div>div:first-child {
+         margin: 0 5% !important;
+     }
+
+     .add-ones-hero>div {
+         margin: 10% auto !important;
+     }
+
+     .mini-card>div>div>div>div:first-child {
+         width: 32% !important;
+     }
+
+     .drive-land>div {
+         max-width: 80% !important;
+     }
+
+     .drive-land {
+         padding: 0 !important;
+     }
+
+     .space-land {
+         padding: 7% 0 !important;
+     }
+
+     .inAddOn {
+         width: 100% !important;
+         position: relative;
+         left: 0% !important;
+         bottom: 0% !important;
+     }
+
+ }
+
+ @media screen and (min-width:768px) and (max-width:1024px) {
+
+     .announcement>div {
+         padding: 6% 0 0 0 !important;
+     }
+
+     .viewAddOn>div>div>div,
+     .add-ones-hero>div>div,
+     .mini-card>div>div>div,
+     .mini-card>div {
+         width: 100% !important;
+     }
+
+     .homeExpressLandingPage {
+         background-image: url('../images/Landingpage.png');
+         background-repeat: no-repeat;
+         background-size: contain;
+         height: 400px !important;
+         width: 650px !important;
+         background-position: bottom center !important;
+     }
+
+     .explore>div {
+         width: 90% !important;
+         margin: auto !important;
+     }
+
+     .mini-card {
+         padding: 0 0 5% 0 !important;
+     }
+
+     .mini-card>div {
+         max-width: 97% !important;
+         grid-template-columns: repeat(3, 1fr) !important;
+         margin: auto !important;
+     }
+
+     .mini-card>div>div>div>div:nth-child(2) {
+         width: 100px !important;
+     }
+
+     .launchAddOn>div>div {
+         margin-left: 0 !important;
+     }
+
+     .support-tools>div {
+         white-space: nowrap !important;
+     }
+
+     .space-land {
+        padding: 4% 0 !important;
+    }
+
+ }
+
+ @media screen and (min-width:320px) and (max-width:767px) {
+
+     .homeExpressLandingPage {
+         background-image: url('../images/Landingpage.png');
+         background-repeat: no-repeat;
+         background-size: contain;
+         height: 200px !important;
+         width: 310px !important;
+         background-position: bottom center !important;
+     }
+
+     .add-ones-hero>div>div>div>div {
+         flex-direction: column !important;
+     }
+
+     .explore>div {
+         width: 100% !important;
+     }
+
+     .add-ones-hero {
+         margin-top: 10% !important;
+     }
+
+     .announcement>div {
+         padding: 0 !important;
+     }
+
+     .announcement>div>div>div {
+         padding: 5% !important;
+     }
+
+     .viewAddOn>div>div>div>div:nth-child(4)>div {
+         justify-content: center !important;
+     }
+
+     .mini-card {
+         padding: 0 0 15% 0 !important;
+     }
+
+     .unleash-power>div>div>div {
+         padding: 0px 25px !important;
+     }
+
+     .inspiration>div>div>div {
+         padding: 0 11% !important;
+     }
+
+     .drive-land p,
+     .space-land p {
+         font-size: 13px !important;
+     }
+
+     .drive-land>div>div>div>div:first-child {
+         width: 75px !important;
+     }
+
+     .support-tools>div {
+         width: 70% !important;
+     }
+
+     .boxmodal>div {
+         gap: 30px !important;
+     }
+ }
+
+ @media screen and (min-width:1024px) and (max-width:1500px) {
+
+     .homeExpressLandingPage {
+         width: 600px !important;
+         height: 370px !important;
+     }
+
+     .explore>div>div {
+         width: 100% !important;
+     }
+
+     .explore>div>div>div {
+         width: 50% !important;
+     }
+
+     .mini-card>div>div>div>div:first-child {
+         width: 32% !important;
+     }
+
+     .inAddOn {
+         width: 15%;
+         position: relative;
+         left: 45%;
+         bottom: 5%;
+     }
+
+     .support-tools>div {
+         width: 65% !important;
+     }
+
+     .mini-card>div>div>div>div:first-child {
+         width: 30% !important;
+     }
+
+     .creative-express>div>div {
+         width: 55% !important;
+     }
+
+
+ }

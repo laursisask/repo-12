@@ -1,84 +1,88 @@
----
-title: Overview - Cat Analytics
-description: This is the overview page of Cat Analytics
-contributors:
-  - https://github.com/icaraps 
----
 
-<Hero slots="heading, text"/>
+import './styles/main.css'
+import AddOnsLaunchBtn from './adobe-express/launch-btn.md'
+import bgImg from './images/Summary_BgImage.jpg'
+import DriveContent from './adobe-express/driveLanding.md'
+import SpaceContent from './adobe-express/spaceAbility.md'
 
-# Cat Analytics API
+<Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero adobe-express-hero"/>
 
-Cat Product API offers limitless ways to integrate your most important customer data into key business processes. Cat Product API offer limitless ways.
+## Unlock creativity anywhere.
 
-<Resources slots="heading, links"/>
+Build add-ons for <a href="https://express.adobe.com">Adobe Express</a> or embed Adobe Express features into your application. Learn more about:
 
-#### Resources
+- [Add-ons](/add-ons)
+- [Embed SDK](https://developer.adobe.com/embed-sdk)
 
-* [Quickstart Guide](https://developer.adobe.com)
-* [Cat Analytics Github Repo](https://github.com/AdobeDocs/dev-site)
+homeExpressLandingPage
 
-## Overview
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power add-ons-intro" position="left" />
 
-This documentation provides instructions for Catt Analytics 2.0 APIs. For working with Cat Analytics APIs, see [Cat Analytics API Documentation](https://github.com/AdobeDocs/dev-site).
+### Extend the power of Adobe Express with add-ons.
 
-The Cat Analytics APIs are a collection of APIs that power Cat Analytics products like Cat Workspace.
-The APIs allow for the creation of data rich user interfaces that you can use to manipulate and integrate data.
-You can also create reports to explore, get insights, or answer important questions about your data.
+Add-ons are applications that helps users add content to their pages, share their designs, and unlock their creative potential in new ways.
 
-## Discover
+![Power of Adobe Express](./images/AddOn.png)
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+- [Learn more](https://adobe.io)
+- [View Documentation](https://adobe.io)
 
-### Get Started
+<TextBlock slots="heading" className="announcement exploreCapabilities inspiration" theme="lightest"/>
 
-[Quickstart Guide](guides/)
+### Get inspiration from the add-on marketplace.
 
-Get started with the Cat Analytics APIs.
+<DriveContent />
 
-<DiscoverBlock slots="heading, link, text"/>
+<SpaceContent />
+  
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power features" position="right" />
 
-### Guides
+### Bring Adobe Express functionality to your users.
 
-[Calculated Metrics API](guides/dummy_metrics_api/)
+Give users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
-Returns information on the user's company that is necessary for making other Cat Analytics API calls.
+![Adobe Express functionality](./images/Embed.png)
 
-<DiscoverBlock slots="link, text"/>
+- [Learn more](https://adobe.io)
+- [View Documentation](https://adobe.io)
+  
+<TextBlock slots="heading" className="announcement exploreCapabilities" theme="light"/>
 
-[Segments API](guides/dummy_oauth_client/)
+### We walk the talk.
 
-Provides configuration guidance and best practices for the /segments endpoint.
+<BoxModalBlock slots="image" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal"/>
 
-<DiscoverBlock slots="link, text"/>
+![Adobe Express functionality](./images/AcrobatEmbed.png)
 
-[Reporting Guide API](guides/dummy_using_postman/)
+![Adobe Express functionality](./images/CCEmbed.png)
 
-Provides configuration guidance and best practices for the /reports endpoint.
+<WrapperComponent slots="content" repeat="1" theme="light" className="learnMoreWrapper inAddOn"/>
 
-<DiscoverBlock slots="link, text"/>
+<AddOnsLaunchBtn />
 
-[Migrating from 1.4 to 2.0](guides/migrating/)
+<TextBlock slots="heading" className="announcement exploreCapabilities support-label" theme="lightest"/>
 
-For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.
+### Support and resources are here for you.
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+<MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card support-tools" />
 
-### API References
+![Blog](./images/LogoSDK.jpg)
 
-[Try the API](api/)
+### Blog
 
-Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
+![Add-on Community](./images/code.jpg)
 
-## Contributing
+### Add-on Community
 
-We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions
-or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull
-request with your contribution. For more information, refer to the [contributing page](support/contribute/).
+![Embed SDK forums](./images/change_log.jpg)
 
-## API Requests & Rate Limits
+### Embed SDK forums
 
-The timeout for API requests through adobe.io is currently *60 seconds*.
+<TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn creative-express" variant="fullwidth"/>
 
-The default rate limit for an Cat Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`.
+### Dive right in.
+
+Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK. Check them out:
+
+- [Add-ons](https://developer.adobe.com/express-add-ons)
+- [Embed SDK](https://developer.adobe.com/embed-sdk)
