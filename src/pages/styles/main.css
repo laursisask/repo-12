@@ -7,13 +7,13 @@
  }
 
  .add-ones-hero>div {
-     width: 80% !important;
+     width: 70% !important;
      margin: 3% auto;
-     gap: 10%;
+     gap: 5%;
  }
 
  .add-ones-hero>div>div {
-     width: 60% !important;
+     width: 50% !important;
  }
 
  .add-ones-hero>div>div:nth-child(2) {

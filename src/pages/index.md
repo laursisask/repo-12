@@ -7,7 +7,7 @@ import SpaceContent from './adobe-express/spaceAbility.md'
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero adobe-express-hero"/>
 
-## Bring the best of Adobe Express anywhere.
+## Unlock creativity anywhere.
 
 Build add-ons for <a href="https://express.adobe.com">Adobe Express</a> or embed Adobe Express features into your application. Learn more about:
 
@@ -18,7 +18,7 @@ homeExpressLandingPage
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power add-ons-intro" position="left" />
 
-### Unleash the power of Adobe Express with add-ons.
+### Extend the power of Adobe Express with add-ons.
 
 Add-ons are applications that helps users add content to their pages, share their designs, and unlock their creative potential in new ways.
 
@@ -39,7 +39,7 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ### Bring Adobe Express functionality to your users.
 
-Give users of all skills levels the power to edit and create by embedding Adobe Express features into your application.
+Give users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
 ![Adobe Express functionality](./images/Embed.png)
 
@@ -48,7 +48,7 @@ Give users of all skills levels the power to edit and create by embedding Adobe 
   
 <TextBlock slots="heading" className="announcement exploreCapabilities" theme="light"/>
 
-### Partner with us to get in on the action.
+### We walk the talk.
 
 <BoxModalBlock slots="image" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal"/>
 
@@ -70,7 +70,7 @@ Give users of all skills levels the power to edit and create by embedding Adobe 
 
 ### Blog
 
-![Add Community](./images/code.jpg)
+![Add-on Community](./images/code.jpg)
 
 ### Add-on Community
 
@@ -84,5 +84,5 @@ Give users of all skills levels the power to edit and create by embedding Adobe 
 
 Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK. Check them out:
 
-- [Add-ons](https://adobe.io)
+- [Add-ons](https://developer.adobe.com/express-add-ons)
 - [Embed SDK](https://developer.adobe.com/embed-sdk)
