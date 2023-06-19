@@ -16,7 +16,7 @@ Build add-ons for <a href="https://express.adobe.com">Adobe Express</a> or embed
 
 homeExpressLandingPage
 
-<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power add-ons-intro" position="left" />
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power" position="left" />
 
 ### Extend the power of Adobe Express with add-ons.
 
@@ -35,9 +35,9 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 <SpaceContent />
   
-<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power features" position="right" />
+<TextBlock slots="heading,text,image,buttons" theme="light" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power" position="right" />
 
-### Bring Adobe Express functionality to your users.
+### Bring Adobe Express functionality to your users with the Embed SDK.
 
 Give users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
@@ -82,7 +82,7 @@ Give users of all skills levels the power to edit and create with access to thou
 
 ### Dive right in.
 
-Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK. Check them out:
+Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK.
 
 - [Add-ons](https://developer.adobe.com/express-add-ons)
 - [Embed SDK](https://developer.adobe.com/embed-sdk)
