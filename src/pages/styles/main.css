@@ -7,7 +7,7 @@
  }
 
  .add-ones-hero>div {
-     width: 70% !important;
+     width: 75% !important;
      margin: 3% auto;
      gap: 5%;
  }
@@ -47,13 +47,13 @@
      background-size: contain;
      width: 600px;
      height: 400px;
-     background-position: bottom center !important;
+     background-position: center !important;
  }
 
  .explore>div {
      width: 70% !important;
      margin: auto !important;
-     padding: 1% 0 !important;
+     padding: 4% 0 !important;
  }
 
  .explore a {
@@ -68,16 +68,17 @@
      color: #424242 !important;
  }
 
- .unleash-power>div>div>div {
-     padding: 4% 4% !important;
-     width: 33rem !important;
- }
-
  .explore>div>div {
-     width: 90% !important;
+     width: 100% !important;
      justify-content: center !important;
+     gap: 5%;
      margin: auto !important;
  }
+
+ .unleash-power>div>div>div {
+    padding: 2% 1% !important;
+    width: 33rem !important;
+}
 
  .unleash-power>div>div>div>div>div>div:nth-child(2)>a {
      border: none !important;
@@ -98,11 +99,6 @@
      font-size: 35px !important;
  }
 
- .add-ons-intro>div,
- .features>div {
-     padding: 5% 1% !important;
- }
-
  .announcement>div>div>div {
      width: 100%;
      text-align: center;
@@ -110,12 +106,12 @@
 
  .announcement>div,
  .exploreCapabilities>div {
-     padding: 4% 0 0 0 !important;
+     padding: 2% 0 0 0 !important;
  }
 
- .inspiration>div {
+ /* .inspiration>div {
     padding: 0 !important;
- }
+ } */
 
  .announcement>div>div>div>h3,
  .viewAddOn h3 {
@@ -212,10 +208,13 @@
      display: none !important;
  }
 
+.space-land {
+    margin-bottom: 5%;
+}
 
 .drive-land>div,
 .space-land>div {
-    max-width: 80% !important;
+    max-width: 75% !important;
 }
 
  .support-tools h3 {
@@ -224,11 +223,10 @@
 
  .space-land h3,
  .drive-land h3 {
-     padding: 16px 16px 8px 16px;
+     padding: 16px 16px 8px 0px;
      font-size: 14px !important;
      color: #2C2C2C;
  }
-
 
  .drive-land>div>div>div>div:first-child,
  .space-land>div>div>div>div:first-child {
@@ -238,13 +236,13 @@
  .drive-land>div>div>div>div,
  .space-land>div>div>div>div {
     justify-content: unset;
-    padding: 0 0 0 16px !important;
+    /* padding: 0 0 0 16px !important; */
  }
 
  .drive-land p,
  .space-land p {
      font-size: 14px !important;
-     padding: 0px 16px;
+     /* padding: 0px 16px; */
      margin-top:0px !important;
      color: #464646 !important;
  }
@@ -278,12 +276,6 @@
 
  .connect-team>div>div {
      padding: 0 0 5% 0 !important;
- }
-
- @media screen and (max-width:2000px) {
-     .explore>div>div {
-         width: 100% !important;
-     }
  }
 
  @media screen and (min-width:320px) and (max-width:1024px) {
@@ -438,6 +430,7 @@
          font-size: 13px !important;
      }
 
+     .space-land>div>div>div>div:first-child,
      .drive-land>div>div>div>div:first-child {
          width: 75px !important;
      }
@@ -456,10 +449,6 @@
      .homeExpressLandingPage {
          width: 600px !important;
          height: 370px !important;
-     }
-
-     .explore>div>div {
-         width: 100% !important;
      }
 
      .explore>div>div>div {
@@ -487,7 +476,6 @@
 
      .creative-express>div>div {
          width: 55% !important;
-     }
-
+     } 
 
  }
