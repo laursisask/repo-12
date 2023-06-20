@@ -1,6 +1,6 @@
 
 import './styles/main.css'
-import bgImg from './images/summary-background.svg'
+import bgImg from './images/Summary-background.svg'
 import DriveContent from './adobe-express/driveLanding.md'
 import SpaceContent from './adobe-express/spaceAbility.md'
 

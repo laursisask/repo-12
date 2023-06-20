@@ -292,7 +292,7 @@
  }
 
  .inColumn>div>div:last-child>div>div:first-child {
-     background: url("../images/bg-blind.svg");
+     background: url("../images/Bg-blind.svg");
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center !important;
