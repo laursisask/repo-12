@@ -1,7 +1,6 @@
 
 import './styles/main.css'
-import AddOnsLaunchBtn from './adobe-express/launch-btn.md'
-import bgImg from './images/Summary_BgImage.jpg'
+import bgImg from './images/summary-background.svg'
 import DriveContent from './adobe-express/driveLanding.md'
 import SpaceContent from './adobe-express/spaceAbility.md'
 
@@ -50,15 +49,23 @@ Give users of all skills levels the power to edit and create with access to thou
 
 ### We walk the talk.
 
-<BoxModalBlock slots="image" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal"/>
+<BoxModalBlock slots="image,heading,text,buttons" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
 
-![Adobe Express functionality](./images/AcrobatEmbed.png)
+![Dazzle within Adobe Acrobat](./images/AcrobatEmbed.png)
 
-![Adobe Express functionality](./images/CCEmbed.png)
+## Dazzle within Adobe Acrobat.
 
-<WrapperComponent slots="content" repeat="1" theme="light" className="learnMoreWrapper inAddOn"/>
+The Adobe Express full editor allows users to create eye-catching cover and divider pages easily and quickly within Acrobat.
 
-<AddOnsLaunchBtn />
+- [Learn more](https://adobe.io)
+
+![Creative Cloud desktop](./images/CCEmbed.png)
+
+## Bring it on Creative Cloud desktop.
+
+Launch the full suite of image and video editing quick actions in any Adobe application with Creative Cloud on desktop.
+
+- [Learn more](https://adobe.io)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities support-label" theme="lightest"/>
 
@@ -66,15 +73,15 @@ Give users of all skills levels the power to edit and create with access to thou
 
 <MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card support-tools" />
 
-![Blog](./images/LogoSDK.jpg)
+![Blog](./images/Blog.svg)
 
 ### Blog
 
-![Add-on Community](./images/code.jpg)
+![Add-on Community](./images/Add-ons-community.svg)
 
-### Add-on Community
+### Add-on community
 
-![Embed SDK forums](./images/change_log.jpg)
+![Embed SDK forums](./images/Embed-fourms.svg)
 
 ### Embed SDK forums
 
@@ -82,7 +89,7 @@ Give users of all skills levels the power to edit and create with access to thou
 
 ### Dive right in.
 
-Bring creativity to the forefront. Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK.
+Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK.
 
 - [Add-ons](https://developer.adobe.com/express-add-ons)
 - [Embed SDK](https://developer.adobe.com/embed-sdk)

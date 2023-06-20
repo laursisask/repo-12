@@ -1,19 +1,19 @@
-<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="drive-land" />
+<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inRow" />
 
-![Code Image](../images/code.jpg)
+![Google Drive](../images/Google-drive.svg)
 
 ## Google Drive
 
-Encrypted and secure access to your files
+Share assets between Google Drive and your Adobe Express projects.
 
-![Code Image](../images/code.jpg)
+![Dropbox](../images/Drop-box.svg)
 
 ## Dropbox
 
-Save and access your files
+Add Dropbox assets to your Adobe Express project, then save creative assets back to Dropbox.
 
-![Code Image](../images/code.jpg)
+![OneDrive](../images/One-drive.svg)
 
 ## OneDrive
 
-Save, edit, and share
+Bring assets to and from OneDrive to fuel your Adobe Express projects.
