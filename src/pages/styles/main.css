@@ -44,10 +44,6 @@
      border-radius: 18px !important;
  }
 
- .adobe-express-hero a>span {
-     font-size: 13pt !important;
- }
-
  .homeExpressLandingPage {
      background-image: url('../images/Landingpage.png');
      background-repeat: no-repeat;
@@ -113,7 +109,11 @@
 
  .announcement>div,
  .exploreCapabilities>div {
-     padding: 3% 0 0 0 !important;
+     padding: 0 !important;
+ }
+
+ .support-label {
+    margin-top: 4%;
  }
 
  .announcement>div>div>div>h3,
@@ -122,7 +122,7 @@
  }
 
  .mini-card {
-     padding: 2% 0 3% 0 !important;
+     padding: 2% 0 4% 0 !important;
  }
 
  .mini-card h3 {
@@ -243,7 +243,7 @@
  }
 
  .boxmodal {
-     padding: 2% 4% !important;
+     padding: 2% 4% 4% !important;
  }
 
  .boxmodal a {
@@ -255,10 +255,24 @@
      font-size: 20pt;
  }
 
+ .boxmodal p>span {
+    width: 85% !important;
+}
+
  .boxmodal>div {
-     width: 70%;
+     width: 95%;
      margin: auto;
+     gap: 5% !important;
  }
+
+ .boxmodal>div>div>div>div {
+    width: 75%;
+    margin: 3% auto;
+}
+
+.boxmodal>div>div>div>div>div>p {
+    margin-top: 8px;
+}
 
  .marketPlace>div>div>div>div:last-child {
      border: none !important;
@@ -297,6 +311,7 @@
      background-size: cover;
      background-position: center !important;
      margin-top: 5%;
+     margin-bottom:15%;
  }
 
  .inColumn>div>div:last-child>div>div:first-child img {
