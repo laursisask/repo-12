@@ -1,25 +1,19 @@
-<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="space-land " />
+<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inColumn" />
 
-![Code Image](../images/code.jpg)
+![Spacefill](../images/Space-fill.svg)
 
 ## Spacefill
 
-Make generative patterns
+Make generative background patterns using geometric shapes and tiling styles.
 
-![Code Image](../images/code.jpg)
+![Attention Insight](../images/Attention-insight.svg)
 
 ## Attention Insight
 
-AI heatmap for your designs
+Instantly predict where users will look when engaging with your design.
 
-![Code Image](../images/code.jpg)
+![Color blindness simulator](../images/Color-blind.svg)
 
 ## Color blindness simulator
 
-Accessibility tool
-
-<!-- ![Code Image](../images/code.jpg)
-
-## Stability
-
-Generate imagery with AI -->
+Make sure designs are accessible by previewing through the eyes of colorblind users.

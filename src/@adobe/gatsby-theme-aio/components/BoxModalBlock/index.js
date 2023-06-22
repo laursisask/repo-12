@@ -10,10 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement } from "react"
+import React, { cloneElement } from "react";
 import { css } from '@emotion/react';
 import classNames from "classnames";
-import { cloneChildren } from "@adobe/gatsby-theme-aio/src/utils"
+import { cloneChildren } from "@adobe/gatsby-theme-aio/src/utils";
+import { HeroButtons } from "@adobe/gatsby-theme-aio/src/components/Hero";
+import PropTypes from "prop-types";
 
 const setImageLoading = (child) => {
     if (child?.props?.mdxType === 'img') {
@@ -30,29 +32,29 @@ const ModalImage = ({ image, styles }) =>
         ? cloneElement(image, {
             children: cloneChildren(image.props.children, setImageLoading),
             css: css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          align-self:center;
-          height: 100%;
-          width: 500px;
-          margin-top: 0;
-          ${styles}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self:center;
+            height: 100%;
+            width: 500px;
+            margin-top: 0;
+            ${styles}
 
-          .gatsby-resp-image-wrapper {
-            max-width: none !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
+            .gatsby-resp-image-wrapper {
+                max-width: none !important;
+                width: 100%;
+                height: 100% !important;
+            }
 
-          .gatsby-resp-image-image {
-            object-fit: cover;
-          }
+            .gatsby-resp-image-image {
+                object-fit: cover;
+            }
 
-          @media screen and (min-width:320px) and (max-width:1024px) {
-            width: 290px !important;
-        }
-        `
+            @media screen and (min-width:320px) and (max-width:1024px) {
+                width: 290px !important;
+            }
+            `
         })
         : null;
 
@@ -60,6 +62,10 @@ const Modal = ({
     image,
     heading,
     text,
+    buttons,
+    isCenter,
+    variantsTypePrimary,
+    variantsTypeSecondary,
 }) => {
 
     return (
@@ -73,19 +79,61 @@ const Modal = ({
             <ModalImage image={image} />
             <div
                 css={css`
-                &gt;span, &gt;a &gt;hr {
-                    display: none !important;
-                }
-            `}
-            >{heading}</div>
-            <div>{text}</div>
+                    width: 95%;
+                    margin: 4% auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                `}
+            >
+                <div
+                    css={css`
+                        &gt;span {
+                            display: none !important;
+                        }
+
+                        &gt;hr {
+                            display: none !important;
+                        }
+
+                        text-align:${isCenter ? "center" : "initial"} !important;
+                    `}
+                >
+                    {heading}
+                </div>
+                <div
+                    css={css`
+                        text-align:${isCenter ? "center" : "initial"}
+                    `}
+                >
+                    {text}
+                </div>
+                <div
+                    css={css`
+                    display : flex;
+                    justify-content: ${isCenter ? "center" : "start"};
+                    `}
+                >
+                    {buttons &&
+                        <HeroButtons
+                            buttons={buttons}
+                            variants={[variantsTypePrimary, variantsTypeSecondary]}
+                            css={css`
+                            margin-top: var(--spectrum-global-dimension-size-250);
+                            `} />
+                    }
+                </div>
+            </div>
         </div>
     )
 }
 
 const BoxModalBlock = ({
     className,
-    bgColor,
+    bgColor = "white",
+    isCenter,
+    variantsTypePrimary = "accent",
+    variantsTypeSecondary = "secondary",
     ...props
 }) => {
     const propKeys = Object?.keys(props);
@@ -93,7 +141,8 @@ const BoxModalBlock = ({
         return {
             image: props[data],
             heading: props[`heading${index}`],
-            text: props[`text${index}`]
+            text: props[`text${index}`],
+            buttons: props[`buttons${index}`]
         };
     });
 
@@ -126,6 +175,10 @@ const BoxModalBlock = ({
                                 image={data.image}
                                 heading={data.heading}
                                 text={data.text}
+                                buttons={data.buttons}
+                                isCenter={isCenter}
+                                variantsTypePrimary={variantsTypePrimary}
+                                variantsTypeSecondary={variantsTypeSecondary}
                             />
                         </div>
                     );
@@ -134,5 +187,14 @@ const BoxModalBlock = ({
         </section>
     )
 }
+
+BoxModalBlock.propTypes = {
+    className: PropTypes.string,
+    bgColor: PropTypes.string,
+    isCenter: PropTypes.bool,
+    variantsTypePrimary: PropTypes.string,
+    variantsTypeSecondary: PropTypes.string,
+
+};
 
 export { BoxModalBlock }
