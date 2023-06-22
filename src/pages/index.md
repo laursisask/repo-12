@@ -81,7 +81,7 @@ Launch the full suite of image and video editing quick actions in any Adobe appl
 
 ### Add-on community
 
-![Embed SDK forums](./images/Embed-fourms.svg)
+![Embed SDK forum](./images/Embed-forums.png)
 
 ### Embed SDK forums
 
