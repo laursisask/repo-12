@@ -49,7 +49,7 @@ Give users of all skills levels the power to edit and create with access to thou
 
 ### We walk the talk.
 
-<BoxModalBlock slots="image,heading,text,buttons" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
+<ImageTextBlock slots="image,heading,text,buttons" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
 
 ![Dazzle within Adobe Acrobat](./images/AcrobatEmbed.png)
 

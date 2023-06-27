@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         title: 'Add-ons',
-        path: 'https://developer.adobe.com/embed-sdk'
+        path: 'https://developer.adobe.com/express-add-ons'
       },
       {
         title: 'Embed SDK',
