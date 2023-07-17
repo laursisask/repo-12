@@ -3,6 +3,7 @@ import './styles/main.css'
 import bgImg from './images/Summary-background.svg'
 import DriveContent from './adobe-express/driveLanding.md'
 import SpaceContent from './adobe-express/spaceAbility.md'
+import LearnMore from "./adobe-express/learnmore.md"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero adobe-express-hero"/>
 
@@ -24,7 +25,7 @@ Add-ons are applications that helps users add content to their pages, share thei
 ![Power of Adobe Express](./images/AddOn.png)
 
 - [Learn more](https://adobe.io)
-- [View Documentation](https://adobe.io)
+- [View documentation](https://adobe.io)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities inspiration" theme="lightest"/>
 
@@ -33,39 +34,47 @@ Add-ons are applications that helps users add content to their pages, share thei
 <DriveContent />
 
 <SpaceContent />
+
+<DCSummaryBlock slots="text, buttons" theme="dark"  buttonPositionRight btnVariant="cta" className="tryForFree" />
+
+Check out all the add-ons available in Adobe Express.
+
+- [Explore more](https://developer.adobe.com/embed-sdk/docs/)
   
 <TextBlock slots="heading,text,image,buttons" theme="light" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power" position="right" />
 
-### Bring Adobe Express functionality to your users with the Embed SDK.
+### Bring Adobe Express functionality to your users with the Embed SDK
 
 Give users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
 ![Adobe Express functionality](./images/Embed.png)
 
-- [Learn more](https://adobe.io)
-- [View Documentation](https://adobe.io)
+- [Try the demo](https://adobe.io)
+- [View documentation](https://adobe.io)
   
-<TextBlock slots="heading" className="announcement exploreCapabilities" theme="light"/>
+<TextBlock slots="heading,text" className="announcement exploreCapabilities walk-in" theme="light"/>
 
 ### We walk the talk.
 
-<ImageTextBlock slots="image,heading,text,buttons" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
+Catch Adobe Express in other Adobe products.
 
-![Dazzle within Adobe Acrobat](./images/AcrobatEmbed.png)
+<ImageTextBlock slots="image,heading,text" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
 
-## Dazzle within Adobe Acrobat.
+![Customize within Adobe Acrobat](./images/AcrobatEmbed.png)
+
+## Customize within Adobe Acrobat.
 
 The Adobe Express full editor allows users to create eye-catching cover and divider pages easily and quickly within Acrobat.
 
-- [Learn more](https://adobe.io)
-
 ![Creative Cloud desktop](./images/CCEmbed.png)
 
-## Bring it on Creative Cloud desktop.
+## Edit within Creative Cloud desktop.
 
 Launch the full suite of image and video editing quick actions in any Adobe application with Creative Cloud on desktop.
 
-- [Learn more](https://adobe.io)
+<WrapperComponent slots="content" repeat="1" theme="light" />
+
+<LearnMore />
 
 <TextBlock slots="heading" className="announcement exploreCapabilities support-label" theme="lightest"/>
 

@@ -1,19 +1,19 @@
 <MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inRow" />
 
-![Google Drive](../images/Google-drive.svg)
+![3D Illustrations](../images/Google-drive.svg)
 
-## Google Drive
+## 3D Illustrations
 
-Share assets between Google Drive and your Adobe Express projects.
+Enhance your projects with 3D icons, illustrations, and animated shapes.
 
-![Dropbox](../images/Drop-box.svg)
+![Attention Insight](../images/Drop-box.svg)
 
-## Dropbox
+## Attention Insight
 
-Add Dropbox assets to your Adobe Express project, then save creative assets back to Dropbox.
+Instantly predict where users will look when engaging with your design.
 
-![OneDrive](../images/One-drive.svg)
+![Bueno NFT](../images/One-drive.svg)
 
-## OneDrive
+## Bueno NFT
 
-Bring assets to and from OneDrive to fuel your Adobe Express projects.
+Effortlessly transform artboards into NFT drops.
