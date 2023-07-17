@@ -9,7 +9,8 @@
  .add-ones-hero>div {
      width: 70% !important;
      margin: 3% auto;
-     gap: 5%;
+     gap: 2%;
+     display: flex;
  }
 
  .add-ones-hero>div>div {
@@ -25,12 +26,12 @@
  .add-ones-hero>div>div>h1 {
      color: white;
      font-family: inherit;
-     font-size: 34pt;
+     font-size: 40px;
  }
 
  .add-ones-hero>div>div>p {
      color: #FFF6FF !important;
-     font-size: 15pt;
+     font-size: 20px;
  }
 
  .add-ones-hero>div>div>p>a {
@@ -73,13 +74,14 @@
 
  .explore>div>div {
      width: 100% !important;
-     justify-content: space-evenly !important;
+     gap: 5%;
+     /* justify-content: space-evenly !important; */
      margin: auto !important;
  }
 
  .unleash-power>div>div>div {
      padding: 2% 1% !important;
-     width: 34rem !important;
+     width: 32rem !important;
  }
 
  .unleash-power>div>div>div>div>div>div:nth-child(2)>a {
@@ -117,7 +119,7 @@
  }
 
  .announcement>div>div>div>h3 {
-     margin-bottom: 0 !important;
+     margin-bottom: 1% !important;
  }
 
  .announcement>div>div>div>h3,
@@ -147,10 +149,12 @@
      justify-content: center !important;
  }
 
- .mini-card>div>div>div {
-     width: 100% !important;
+ .mini-card>div>div>div{
+    box-shadow: 0 9px 15px 5px #e6e6e6;
+    width: 100% !important;
      margin: 0 !important;
- }
+}
+
 
  .mini-card>div>div>div>div {
      height: 100px !important;
@@ -189,7 +193,7 @@
  }
 
  .explore p:first-child {
-     width: 46% !important;
+     width: 50% !important;
  }
 
  .viewAddOn>a>span,
@@ -276,6 +280,11 @@
      width: 85% !important;
  }
 
+ .walkthetalk p,
+ .boxmodal p {
+    font-size: 20px;
+ }
+
  .boxmodal>div {
      width: 95%;
      margin: auto;
@@ -332,19 +341,14 @@
      width: 90% !important;
  }
 
- .inColumn>div>div:last-child>div>div:first-child {
-     background: url("../images/Bg-blind.svg");
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center !important;
-     margin-top: 5%;
-     margin-bottom: 15%;
- }
-
  .inColumn>div>div:last-child>div>div:first-child img {
      width: 125px;
      position: relative;
      right: 15px;
+ }
+
+ .inColumn>div {
+    margin-bottom: 3%;
  }
 
  .tryForFree {
@@ -374,12 +378,8 @@
      color: #696969 !important;
  }
 
- .walk-in>div>div>div {
-     gap: 16px !important;
- }
-
  .primaryBtn {
-     background-color: #f8f8f8 !important;
+     background-color: #f8f8f8 !important; 
  }
 
  .primaryBtn>div>div>div>div:nth-child(2) {
@@ -424,6 +424,13 @@
      color: #3B3B3B !important;
      font-size: 16px !important;
  }
+
+ .support-tools {
+    justify-items: center;
+ }
+ 
+
+
 
  @media screen and (min-width:320px) and (max-width:1024px) {
 
@@ -715,11 +722,10 @@
      .support-tools>div {
          width: 65% !important;
      }
-
+     
      .mini-card>div>div>div>div:first-child {
-         width: 30% !important;
-     }
-
+        width: 100px !important;
+    }
      .creative-express>div>div {
          width: 65% !important;
      }
@@ -760,7 +766,7 @@
      .marketPlace>div>div>div>div:last-child>div>p {
          margin-top: 5px !important;
          -webkit-line-clamp: unset !important;
-         font-size: 10pt !important;
+         font-size: 12pt !important;
          font-weight: 500 !important;
      }
 
@@ -777,11 +783,7 @@
 
      .unleash-power>div>div>div {
          padding: 4% 0% !important;
-         width: 28rem !important;
-     }
-
-     .unleash-power h2 {
-         font-size: 30px !important;
+         width: 25rem !important;
      }
 
      .creative-express>div>div{
@@ -795,20 +797,12 @@
          max-width: calc(calc(10 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))) !important;
      }
 
-     .marketPlace>div>div>div>div:last-child>div>p {
-         font-size: 9pt !important;
-     }
-
      .add-ones-hero>div>div>h1 {
          font-size: 30pt !important;
      }
 
      .add-ones-hero>div>div>p {
          font-size: 14pt !important;
-     }
-
-     .support-tools>div>div>div>div:first-child {
-         width: 6rem !important;
      }
 
  }
