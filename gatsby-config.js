@@ -24,22 +24,22 @@ module.exports = {
       },
       {
         title: 'Add-ons',
-        path: 'https://developer.adobe.com/express-add-ons'
+        path: 'https://developer-stage.adobe.com/express/add-ons'
       },
       {
         title: 'Embed SDK',
-        path: 'https://developer.adobe.com/embed-sdk'
+        path: 'https://developer-stage.adobe.com/express/embed-sdk'
       },
       {
         title: 'Documentation',
         menu: [
           {
             title: 'Add-ons',
-            path: 'https://developer.adobe.com/express-add-ons/docs/guides/'
+            path: 'https://developer-stage.adobe.com/express/add-ons/docs/guides/'
           },
           {
             title: 'Embed SDK',
-            path: 'https://developer.adobe.com/embed-sdk/docs/guides/'
+            path: 'https://developer-stage.adobe.com/express/embed-sdk/docs/guides/'
           },
         ]
       }

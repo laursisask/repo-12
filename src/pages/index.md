@@ -9,10 +9,10 @@ import LearnMore from "./adobe-express/learnmore.md"
 
 ## Unlock creativity anywhere.
 
-Adobe Express is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for <a href="https://new.express.adobe.com">Adobe Express</a> or embed Adobe Express features into your application. Learn more about:
+[Adobe Express](https://adobe.com/express) is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for Adobe Express or embed Adobe Express features into your application. Learn more about:
 
-- [Add-ons](https://developer.adobe.com/express-add-ons)
-- [Embed SDK](https://developer.adobe.com/embed-sdk)
+- [Add-ons](https://developer-stage.adobe.com/express/add-ons)
+- [Embed SDK](https://developer-stage.adobe.com/express/embed-sdk)
 
 homeExpressLandingPage
 
@@ -24,8 +24,8 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ![Power of Adobe Express](./images/AddOn.png)
 
-- [Learn more](https://developer.adobe.com/express-add-ons)
-- [View documentation](https://developer.adobe.com/express-add-ons/docs)
+- [Learn more](https://developer-stage.adobe.com/express/add-ons)
+- [View documentation](https://developer-stage.adobe.com/express/add-ons/docs/guides/)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities inspiration" theme="lightest"/>
 
@@ -50,7 +50,7 @@ Give your users of all skills levels the power to edit and create with access to
 ![Adobe Express functionality](./images/Embed.png)
 
 - [Try the demo](https://demo.expressembed.com)
-- [View documentation](https://developer.adobe.com/embed-sdk/docs)
+- [View documentation](https://developer-stage.adobe.com/express/embed-sdk/docs)
   
 <TextBlock slots="heading,text" className="announcement exploreCapabilities walkthetalk" theme="light"/>
 
@@ -100,5 +100,5 @@ Launch Adobe Express image and video quick actions within Creative Cloud on desk
 
 Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK.
 
-- [Add-ons](https://developer.adobe.com/express-add-ons)
-- [Embed SDK](https://developer.adobe.com/embed-sdk)
+- [Add-ons](https://developer-stage.adobe.com/express/add-ons)
+- [Embed SDK](https://developer-stage.adobe.com/express/embed-sdk)
