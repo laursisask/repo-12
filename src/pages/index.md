@@ -9,7 +9,7 @@ import LearnMore from "./adobe-express/learnmore.md"
 
 ## Unlock creativity anywhere.
 
-<a href="https://adobe.com/express">Adobe Express</a> is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for Adobe Express or embed Adobe Express features into your application. Learn more about:
+[Adobe Express](https://adobe.com/express) is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for Adobe Express or embed Adobe Express features into your application. Learn more about:
 
 - [Add-ons](https://developer-stage.adobe.com/express/add-ons)
 - [Embed SDK](https://developer-stage.adobe.com/express/embed-sdk)
