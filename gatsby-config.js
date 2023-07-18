@@ -11,7 +11,7 @@
  */
 
 module.exports = {
-  pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
+  pathPrefix: process.env.PATH_PREFIX || '/express/',
   siteMetadata: {
     "home": {
       "title": "Products",
