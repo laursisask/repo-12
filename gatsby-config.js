@@ -14,8 +14,8 @@ module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
   siteMetadata: {
     "home": {
-      "title": "Adobe Express",
-      "path": "https://new.express.adobe.com"
+      "title": "Products",
+      "path": "https://developer.adobe.com/apis"
     },
     pages: [
       {
@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         title: 'Add-ons',
-        path: 'https://developer.adobe.com/embed-sdk'
+        path: 'https://developer.adobe.com/express-add-ons'
       },
       {
         title: 'Embed SDK',

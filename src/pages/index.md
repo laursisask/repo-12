@@ -3,14 +3,15 @@ import './styles/main.css'
 import bgImg from './images/Summary-background.svg'
 import DriveContent from './adobe-express/driveLanding.md'
 import SpaceContent from './adobe-express/spaceAbility.md'
+import LearnMore from "./adobe-express/learnmore.md"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero adobe-express-hero"/>
 
 ## Unlock creativity anywhere.
 
-Build add-ons for <a href="https://express.adobe.com">Adobe Express</a> or embed Adobe Express features into your application. Learn more about:
+Adobe Express is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for <a href="https://new.express.adobe.com">Adobe Express</a> or embed Adobe Express features into your application. Learn more about:
 
-- [Add-ons](/add-ons)
+- [Add-ons](https://developer.adobe.com/express-add-ons)
 - [Embed SDK](https://developer.adobe.com/embed-sdk)
 
 homeExpressLandingPage
@@ -23,8 +24,8 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ![Power of Adobe Express](./images/AddOn.png)
 
-- [Learn more](https://adobe.io)
-- [View Documentation](https://adobe.io)
+- [Learn more](https://developer.adobe.com/express-add-ons)
+- [View documentation](https://developer.adobe.com/express-add-ons/docs)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities inspiration" theme="lightest"/>
 
@@ -33,39 +34,47 @@ Add-ons are applications that helps users add content to their pages, share thei
 <DriveContent />
 
 <SpaceContent />
+
+<DCSummaryBlock slots="text, buttons" theme="dark"  buttonPositionRight btnVariant="cta" className="tryForFree" />
+
+Check out all the add-ons available in Adobe Express.
+
+- [Explore more](https://new.express.adobe.com/new?category=addOns)
   
 <TextBlock slots="heading,text,image,buttons" theme="light" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore unleash-power" position="right" />
 
-### Bring Adobe Express functionality to your users with the Embed SDK.
+### Bring Adobe Express functionality to your website with the Embed SDK.
 
-Give users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
+Give your users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
 ![Adobe Express functionality](./images/Embed.png)
 
-- [Learn more](https://adobe.io)
-- [View Documentation](https://adobe.io)
+- [Try the demo](https://demo.expressembed.com)
+- [View documentation](https://developer.adobe.com/embed-sdk/docs)
   
-<TextBlock slots="heading" className="announcement exploreCapabilities" theme="light"/>
+<TextBlock slots="heading,text" className="announcement exploreCapabilities walkthetalk" theme="light"/>
 
 ### We walk the talk.
 
-<BoxModalBlock slots="image,heading,text,buttons" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
+Catch Adobe Express in other Adobe products.
 
-![Dazzle within Adobe Acrobat](./images/AcrobatEmbed.png)
+<ImageTextBlock slots="image,heading,text" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
 
-## Dazzle within Adobe Acrobat.
+![Customize within Adobe Acrobat](./images/AcrobatEmbed.png)
 
-The Adobe Express full editor allows users to create eye-catching cover and divider pages easily and quickly within Acrobat.
+## Customize within Adobe Acrobat.
 
-- [Learn more](https://adobe.io)
+The embedded full editor allows users to create eye-catching cover and divider pages easily and quickly within Acrobat.
 
 ![Creative Cloud desktop](./images/CCEmbed.png)
 
-## Bring it on Creative Cloud desktop.
+## Edit within Adobe Creative Cloud desktop.
 
-Launch the full suite of image and video editing quick actions in any Adobe application with Creative Cloud on desktop.
+Launch Adobe Express image and video quick actions within Creative Cloud on desktop.
 
-- [Learn more](https://adobe.io)
+<WrapperComponent slots="content" repeat="1" theme="light" />
+
+<LearnMore />
 
 <TextBlock slots="heading" className="announcement exploreCapabilities support-label" theme="lightest"/>
 
@@ -83,7 +92,7 @@ Launch the full suite of image and video editing quick actions in any Adobe appl
 
 ![Embed SDK forum](./images/Embed-forums.png)
 
-### Embed SDK forums
+### Embed SDK forum
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn creative-express" variant="fullwidth"/>
 
