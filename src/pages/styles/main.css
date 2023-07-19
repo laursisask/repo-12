@@ -31,7 +31,7 @@
 
  .add-ones-hero>div>div>p {
      color: #FFF6FF !important;
-     font-size: 18px;
+     font-size: 16px;
  }
 
  .add-ones-hero>div>div>p>a {
@@ -70,7 +70,7 @@
 
  .explore p {
      color: #424242 !important;
-     font-size: 18px;
+     font-size: 16px;
  }
 
  .explore>div>div {
@@ -97,12 +97,12 @@
 
  .unleash-power>div>div>div>div>div>div:nth-child(2)>a>span>span {
      color: #00A1C7 !important;
-     font-size: 18px !important;
+     font-size: 16px !important;
      font-weight: 400;
  }
 
  .unleash-power h2 {
-     font-size: 35px !important;
+     font-size: 37px !important;
  }
 
  .announcement>div>div>div {
@@ -125,7 +125,7 @@
 
  .announcement>div>div>div>h3,
  .viewAddOn h3 {
-     font-size: 25pt !important;
+     font-size: 37px !important;
  }
 
  .mini-card {
@@ -182,7 +182,7 @@
  }
 
  .viewAddOn p {
-     font-size: 18px !important;
+     font-size: 16px !important;
      margin-top: 2%;
      color: #FFFAF0 !important;
      font-weight: 100 !important;
@@ -204,19 +204,19 @@
      color: white !important;
  }
 
- .viewAddOn a,
+ /* .viewAddOn a,
  .add-ones-hero>div>div>div>div a {
      background-color: transparent !important;
      border-color: white !important;
      width: 125px;
      height: 40px;
      border-radius: 25px;
- }
+ } */
 
  .viewAddOn a>span>span,
  .add-ones-hero>div>div>div a>span,
  .add-ones-hero>div>div>div a>span>span {
-     font-size: 18px !important;
+     font-size: 16px !important;
      color: #FFFAFA !important;
  }
 
@@ -279,13 +279,19 @@
 
  .walkthetalk p,
  .boxmodal p {
-    font-size: 18px;
+    font-size: 16px;
  }
 
  .boxmodal>div {
      margin: auto;
      gap: 3% !important;
+     flex:1;
+     width: 85%;
  }
+
+ .boxmodal>div>div {
+    flex:1;
+}
 
  .boxmodal>div>div>div>div {
      width: 75%;
@@ -306,8 +312,8 @@
  }
 
  .marketPlace {
-     width: 100% !important;
-     padding: 2% 0 0 0 !important;
+    width: 100% !important;
+    padding: 2% 0 0 0 !important;
  }
 
  .marketPlace>div>div>div>div:last-child {
@@ -320,27 +326,15 @@
      font-size: 22px !important;
  }
 
+ .marketPlace>div {
+    margin-bottom: 4% !important;
+}
+
  .marketPlace>div>div>div>div:last-child>div>p {
      margin-top: 5px !important;
      -webkit-line-clamp: 3 !important;
-     font-size: 18px !important;
+     font-size: 16px !important;
      font-weight: 500 !important;
- }
-
- .marketPlace>div>div:nth-child(2)>div>div:last-child>div>p,
- .marketPlace>div>div:nth-child(3)>div>div:last-child>div>p {
-     width: 90% !important;
- }
-
- .marketPlace>div>div:nth-child(1)>div>div:last-child>div>p,
- .inColumn>div>div:nth-child(2)>div>div:last-child>div>p {
-     width: 90% !important;
- }
-
- .inColumn>div>div:last-child>div>div:first-child img {
-     width: 125px;
-     position: relative;
-     right: 15px;
  }
 
  
@@ -348,10 +342,7 @@
     margin-top: 1%;
     margin-bottom: 2%
  }
- .inColumn>div {
-    margin-bottom: 5%;
- }
-
+ 
  .tryForFree {
      padding: 2% !important;
      background-color: #000000 !important;
@@ -364,7 +355,7 @@
  }
 
  .tryForFree>div>div>p {
-     font-size: 18px;
+     font-size: 16px;
      letter-spacing: 0.5px;
      margin-bottom: 0 !important;
      color: white;
@@ -377,7 +368,7 @@
 
  .tryForFree>div>div:nth-child(2)>div>div>div>a>span>span {
      color: #696969 !important;
-     font-size: 18px;
+     font-size: 16px;
  }
 
  .primaryBtn {
@@ -411,13 +402,13 @@
 
  .primaryBtn a>span>span {
      color: #696969 !important;
-     font-size: 18px !important;
+     font-size: 16px !important;
  }
 
 
  .unleash-power>div>div>div>div>div>div:first-child>a>span>span {
      color: #3B3B3B !important;
-     font-size: 18px !important;
+     font-size: 16px !important;
      white-space: nowrap;
  }
 
@@ -532,7 +523,7 @@
      }
 
      .mini-card h3 {
-         font-size: 18px !important;
+         font-size: 16px !important;
      }
 
      .support-tools>div {
@@ -553,16 +544,8 @@
          padding: 0 !important;
      }
 
-     .inColumn {
-         padding: 2% 0 !important;
-     }
-
-     .inColumn>div>div:last-child>div>div:first-child {
-         margin-top: 0 !important;
-     }
-
      .tryForFree>div>div>p {
-         font-size: 18px;
+         font-size: 16px;
          text-align: center;
          margin-bottom: 3% !important;
      }
@@ -576,7 +559,7 @@
          width: 95% !important;
      }
 
- }
+}
 
  @media screen and (min-width:320px) and (max-width:767px) {
 
@@ -587,10 +570,6 @@
          height: 250px !important;
          width: 325px !important;
          background-position: bottom center !important;
-     }
-
-     .add-ones-hero>div>div>h1 {
-         font-size: 30pt !important;
      }
 
      .add-ones-hero {
@@ -639,10 +618,6 @@
 
      .add-ones-hero>div>div>div>div>div:last-child {
          margin-top: 20px !important;
-     }
-
-     .inColumn {
-         padding: 6% 0 !important;
      }
 
      .boxmodal>div {
@@ -713,19 +688,13 @@
          width: 65% !important;
      }
 
-     .add-ones-hero>div>div>h1 {
-         color: white;
-         font-family: inherit;
-         font-size: 27pt;
-     }
-
      .unleash-power>div>div>div {
          padding: 4% 0% !important;
          width: 37rem !important;
      }
 
      .boxmodal>div>div>div>div {
-         width: 90% !important;
+         width: 100% !important;
      }
 
      .boxmodal>div>div>div>div>div {
@@ -745,19 +714,8 @@
      .marketPlace>div>div>div>div:last-child>div>p {
          margin-top: 5px !important;
          -webkit-line-clamp: unset !important;
-         font-size: 18px !important;
+         font-size: 16px !important;
          font-weight: 500 !important;
-     }
-
-     .marketPlace>div>div:nth-child(1)>div>div:last-child>div>p,
-     .inColumn>div>div:nth-child(2)>div>div:last-child>div>p,
-     .explore>div>div {
-         width: 100% !important;
-     }
-
-     .marketPlace>div>div:nth-child(2)>div>div:last-child>div>p,
-     .marketPlace>div>div:nth-child(3)>div>div:last-child>div>p {
-         width: 95% !important;
      }
 
      .unleash-power>div>div>div {
@@ -774,10 +732,6 @@
  @media screen and (min-width:1441px) and (max-width : 1500px) {
      .marketPlace>div {
          max-width: calc(calc(10 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))) !important;
-     }
-
-     .add-ones-hero>div>div>h1 {
-         font-size: 30pt !important;
      }
 
  }

@@ -1,7 +1,6 @@
 
 import './styles/main.css'
 import bgImg from './images/Summary-background.svg'
-import DriveContent from './adobe-express/driveLanding.md'
 import SpaceContent from './adobe-express/spaceAbility.md'
 import LearnMore from "./adobe-express/learnmore.md"
 
@@ -31,8 +30,6 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ### Get inspiration from the add-on marketplace.
 
-<DriveContent />
-
 <SpaceContent />
 
 <DCSummaryBlock slots="text, buttons" theme="dark"  buttonPositionRight btnVariant="cta" className="tryForFree" />
@@ -49,7 +46,7 @@ Give your users of all skills levels the power to edit and create with access to
 
 ![Adobe Express functionality](./images/Embed.png)
 
-- [Try the demo](https://demo.expressembed.com)
+- [Try the demo](https://demo-stage.expressembed.com)
 - [View documentation](https://developer-stage.adobe.com/express/embed-sdk/docs)
   
 <TextBlock slots="heading,text" className="announcement exploreCapabilities walkthetalk" theme="light"/>
