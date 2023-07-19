@@ -1,10 +1,12 @@
-<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inColumn" />
+<MiniResourceCard slots="image,heading,text,link" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inColumn" />
 
 ![Color Designer](../images/colordesigner_rounded.png)
 
 ## Color Designer
 
-Make generative background patterns using geometric shapes and tiling styles.
+Easily build color palettes and generate tints, shades, and stepped gradients.
+
+https://new.express.adobe.com/new?category=addOns&addOnId=wii0lk8nm
 
 ![OneDrive](../images/OneDrive_rounded.png)
 
@@ -12,8 +14,12 @@ Make generative background patterns using geometric shapes and tiling styles.
 
 Bring assets to and from OneDrive to fuel your Adobe Express projects.
 
+https://new.express.adobe.com/new?category=addOns&addOnId=w1n2h1lgm
+
 ![Spacefill](../images/spacefill_rounded.png)
 
 ## Spacefill
 
 Make generative background patterns using geometric shapes and tiling styles.
+
+https://new.express.adobe.com/new?category=addOns&addOnId=w466h1l71
