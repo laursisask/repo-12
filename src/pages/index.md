@@ -2,7 +2,6 @@
 import './styles/main.css'
 import bgImg from './images/Summary-background.svg'
 import DriveContent from './adobe-express/driveLanding.md'
-import SpaceContent from './adobe-express/spaceAbility.md'
 import LearnMore from "./adobe-express/learnmore.md"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero adobe-express-hero"/>
@@ -32,8 +31,6 @@ Add-ons are applications that helps users add content to their pages, share thei
 ### Get inspiration from the add-on marketplace.
 
 <DriveContent />
-
-<SpaceContent />
 
 <DCSummaryBlock slots="text, buttons" theme="dark"  buttonPositionRight btnVariant="cta" className="tryForFree" />
 
