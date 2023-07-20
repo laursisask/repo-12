@@ -75,7 +75,6 @@
  .explore>div>div {
      width: 100% !important;
      gap: 5%;
-     /* justify-content: space-evenly !important; */
      margin: auto !important;
  }
 
@@ -139,7 +138,7 @@
  .mini-card>div {
      padding: 10px !important;
      gap: 5% !important;
-     width: 60% !important;
+     width: 65% !important;
      margin: auto !important;
      max-width: 100% !important;
  }
@@ -149,12 +148,11 @@
      justify-content: center !important;
  }
 
- .mini-card>div>div>div{
-    box-shadow: 0 9px 15px 5px #e6e6e6;
-    width: 100% !important;
+ .mini-card>div>div>div {
+     box-shadow: 0 9px 15px 5px #e6e6e6;
+     width: 100% !important;
      margin: 0 !important;
-}
-
+ }
 
  .mini-card>div>div>div>div {
      height: 100px !important;
@@ -202,15 +200,6 @@
  .adobe-express-hero a>span>span {
      color: white !important;
  }
-
- /* .viewAddOn a,
- .add-ones-hero>div>div>div>div a {
-     background-color: transparent !important;
-     border-color: white !important;
-     width: 125px;
-     height: 40px;
-     border-radius: 25px;
- } */
 
  .viewAddOn a>span>span,
  .add-ones-hero>div>div>div a>span,
@@ -336,7 +325,6 @@
      font-weight: 500 !important;
  }
 
- 
  .inRow>div{
     margin-top: 1%;
     margin-bottom: 2%
@@ -390,8 +378,7 @@
      margin-top: 0 !important;
  }
 
- .primaryBtn a,
- .unleash-power>div>div>div>div>div>div:first-child>a {
+ .primaryBtn a {
      border-color: #3B3B3B !important;
      background: transparent !important;
      width: 125px;
@@ -404,7 +391,6 @@
      font-size: 16px !important;
  }
 
-
  .unleash-power>div>div>div>div>div>div:first-child>a>span>span {
      color: #3B3B3B !important;
      font-size: 16px !important;
@@ -415,9 +401,6 @@
     justify-items: center;
  }
  
-
-
-
  @media screen and (min-width:320px) and (max-width:1024px) {
 
      .add-ones-hero>div>div>div>div a,
@@ -425,6 +408,10 @@
      .viewAddOn a,
      .unleash-power>div>div>div>div>div>div:first-child>a {
          width: 130px !important;
+     }
+
+     .add-ones-hero>div {
+         flex-direction: column !important;
      }
 
      .tryForFree {
@@ -677,7 +664,11 @@
      }
 
      .support-tools>div {
-         width: 65% !important;
+         width: 75% !important;
+     }
+
+     .unleash-power h2 {
+         font-size: 33px !important;
      }
      
      .mini-card>div>div>div>div:first-child {
@@ -707,7 +698,7 @@
 
      .marketPlace>div {
          grid-gap: 16px;
-         max-width: calc(calc(10 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)));
+         max-width: calc(calc(11 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)));
      }
 
      .marketPlace>div>div>div>div:last-child>div>p {
@@ -731,6 +722,10 @@
  @media screen and (min-width:1441px) and (max-width : 1500px) {
      .marketPlace>div {
          max-width: calc(calc(10 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))) !important;
+     }
+
+     .viewAddOn>div>div>div {
+         width: 100% !important;
      }
 
  }
