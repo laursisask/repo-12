@@ -77,19 +77,25 @@ Launch Adobe Express image and video quick actions within Creative Cloud on desk
 
 ### Support and resources are here for you.
 
-<MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card support-tools" />
+<MiniResourceCard slots="image,heading,link" repeat="3" theme="lightest" inRow="3" className="mini-card support-tools" />
 
 ![Blog](./images/Blog.svg)
 
 ### Blog
 
+[Adobe I/O](https://adobe.io)
+
 ![Add-on Community](./images/Add-ons-community.svg)
 
 ### Add-on community
 
+[Adobe I/O](https://adobe.io)
+
 ![Embed SDK forum](./images/Embed-forums.png)
 
 ### Embed SDK forum
+
+[Adobe I/O](https://adobe.io)
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn creative-express" variant="fullwidth"/>
 

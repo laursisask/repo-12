@@ -145,7 +145,6 @@
  }
 
  .mini-card>div>div {
-     display: flex !important;
      justify-content: center !important;
  }
 
