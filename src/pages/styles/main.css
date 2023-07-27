@@ -145,14 +145,14 @@
  }
 
  .mini-card>div>div {
-     display: flex !important;
-     justify-content: center !important;
- }
-
- .mini-card>div>div>div {
-     box-shadow: 0 9px 15px 5px #e6e6e6;
+     box-shadow: 0 9px 15px 5px #e6e6e6 !important;
      width: 100% !important;
      margin: 0 !important;
+ }
+
+ .mini-card a>div:last-child {
+     border: none !important;
+     height: 67px !important;
  }
 
  .mini-card>div>div>div>div {
@@ -401,7 +401,11 @@
  .support-tools {
     justify-items: center;
  }
- 
+
+ .marketPlace a>div:last-child {
+     border: none !important;
+ }
+
  @media screen and (min-width:320px) and (max-width:1024px) {
 
      .add-ones-hero>div>div>div>div a,
@@ -460,6 +464,11 @@
 
      .mini-card>div>div>div>div:nth-child(2) {
          padding: 0 0 0 2% !important;
+     }
+
+     .mini-card a>div:last-child {
+         height: 60px !important;
+         padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-100) var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-50);
      }
  }
 
@@ -673,8 +682,9 @@
      }
      
      .mini-card>div>div>div>div:first-child {
-        width: 100px !important;
-    }
+         width: 100px !important;
+     }
+
      .creative-express>div>div {
          width: 65% !important;
      }
