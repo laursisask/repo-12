@@ -4,7 +4,7 @@
 
 ## Color Designer
 
-Easily build color palettes and generate tints, shades, and stepped gradients.
+Easily build color palettes then generate tints and shades.
 
 https://new.express.adobe.com/new?category=addOns&addOnId=wii0lk8nm
 

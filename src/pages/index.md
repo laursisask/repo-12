@@ -10,8 +10,8 @@ import LearnMore from "./adobe-express/learnmore.md"
 
 [Adobe Express](https://adobe.com/express) is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for Adobe Express or embed Adobe Express features into your application. Learn more about:
 
-- [Add-ons](https://developer-stage.adobe.com/express/add-ons)
-- [Embed SDK](https://developer-stage.adobe.com/express/embed-sdk)
+- [Add-ons](https://developer.adobe.com/express/add-ons)
+- [Embed SDK](https://developer.adobe.com/express/embed-sdk)
 
 homeExpressLandingPage
 
@@ -23,8 +23,8 @@ Add-ons are applications that helps users add content to their pages, share thei
 
 ![Power of Adobe Express](./images/AddOn.png)
 
-- [Learn more](https://developer-stage.adobe.com/express/add-ons)
-- [View documentation](https://developer-stage.adobe.com/express/add-ons/docs/guides/)
+- [Learn more](https://developer.adobe.com/express/add-ons)
+- [View documentation](https://developer.adobe.com/express/add-ons/docs/guides/)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities inspiration" theme="lightest"/>
 
@@ -46,8 +46,8 @@ Give your users of all skills levels the power to edit and create with access to
 
 ![Adobe Express functionality](./images/Embed.png)
 
-- [Try the demo](https://demo-stage.expressembed.com)
-- [View documentation](https://developer-stage.adobe.com/express/embed-sdk/docs)
+- [Try the demo](https://demo.expressembed.com)
+- [View documentation](https://developer.adobe.com/express/embed-sdk/docs/guides)
   
 <TextBlock slots="heading,text" className="announcement exploreCapabilities walkthetalk" theme="light"/>
 
@@ -83,19 +83,19 @@ Launch Adobe Express image and video quick actions within Creative Cloud on desk
 
 ### Blog
 
-[Adobe I/O](https://adobe.io)
+[Link to blog post](https://blog.developer.adobe.com/adobe-express-introduces-add-ons-for-developers-24ca166a5614)
 
 ![Add-on Community](./images/Add-ons-community.svg)
 
-### Add-on community
+### Add-on community (coming soon)
 
-[Adobe I/O](https://adobe.io)
+[Link to add-ons community]()
 
 ![Embed SDK forum](./images/Embed-forums.png)
 
 ### Embed SDK forum
 
-[Adobe I/O](https://adobe.io)
+[link to embed forum](https://community.adobe.com/t5/adobe-express-embed-sdk/ct-p/ct-express-embed-sdk?page=1&sort=latest_replies&lang=all&tabid=all)
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn creative-express" variant="fullwidth"/>
 
@@ -103,5 +103,5 @@ Launch Adobe Express image and video quick actions within Creative Cloud on desk
 
 Explore which Adobe Express add-ons to build into your platform or learn more about the Adobe Express Embed SDK.
 
-- [Add-ons](https://developer-stage.adobe.com/express/add-ons)
-- [Embed SDK](https://developer-stage.adobe.com/express/embed-sdk)
+- [Add-ons](https://developer.adobe.com/express/add-ons)
+- [Embed SDK](https://developer.adobe.com/express/embed-sdk)

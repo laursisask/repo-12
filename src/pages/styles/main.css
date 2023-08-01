@@ -159,6 +159,11 @@
      height: 100px !important;
  }
 
+ .mini-card>div>div>div>a>h2 {
+    height: 100px !important;
+}
+
+
  .mini-card>div>div>div>div:nth-child(2) {
      width: 200px !important;
      padding: 0px 0 0 4% !important;
@@ -301,7 +306,6 @@
  }
 
  .marketPlace {
-    width: 100% !important;
     padding: 2% 0 0 0 !important;
  }
 
@@ -459,7 +463,7 @@
 
      .mini-card>div>div>div,
      .mini-card>div>div>div>div {
-         height: 90px !important;
+         height: 100px !important;
      }
 
      .mini-card>div>div>div>div:nth-child(2) {
@@ -525,11 +529,6 @@
      .support-tools>div {
          white-space: nowrap !important;
          gap: 3% !important;
-     }
-
-     .mini-card>div>div>div>div,
-     .mini-card>div>div>div {
-         height: 85px !important;
      }
 
      .inspiration>div>div>div {
@@ -672,9 +671,12 @@
      .mini-card>div>div>div>div:first-child {
          width: 32% !important;
      }
+     .mini-card>div>div>a>div>h2{
+        height: 100px !important;
+     }
 
      .support-tools>div {
-         width: 75% !important;
+         height: 100px !important;
      }
 
      .unleash-power h2 {
