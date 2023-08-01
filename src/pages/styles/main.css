@@ -222,10 +222,10 @@
  .viewAddOn h3>span>a {
      display: none !important;
  }
-
+ 
  .support-tools h3 {
-     white-space: nowrap !important;
- }
+    white-space: nowrap !important;
+}
 
  .launchAddOn {
      background-color: white !important;

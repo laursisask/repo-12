@@ -87,9 +87,9 @@ Launch Adobe Express image and video quick actions within Creative Cloud on desk
 
 ![Add-on Community](./images/Add-ons-community.svg)
 
-### Add-on community (coming soon)
+### Add-on documentation
 
-[Link to add-ons community]()
+[Link to add-ons community](https://developer.adobe.com/express/add-ons/docs/guides/)
 
 ![Embed SDK forum](./images/Embed-forums.png)
 
