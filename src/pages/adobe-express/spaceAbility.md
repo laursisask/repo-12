@@ -20,6 +20,6 @@ https://new.express.adobe.com/new?category=addOns&addOnId=w1n2h1lgm
 
 ## Spacefill
 
-Make generative background patterns using geometric shapes and tiling styles.
+Make generative background patterns using geometric shapes and tiles.
 
 https://new.express.adobe.com/new?category=addOns&addOnId=w466h1l71
