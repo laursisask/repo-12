@@ -1,3 +1,19 @@
+---
+keywords:
+  - Adobe Express
+  - Adobe Express Embed SDK
+  - Express developer platform
+  - Add-ons
+  - Embed SDK 
+  - Creative SDK
+  - Acrobat
+  - Creative Cloud desktop
+  - Blog
+title: Adobe Express Developer Platform
+description: Adobe Express Embed SDK is an all-in-one design, photo, and video tool to make content creation easy. Build add-ons for Adobe Express or embed Adobe Express features into your application. 
+contributors:
+  - https://github.com/amandahuarng
+---
 
 import './styles/main.css'
 import bgImg from './images/Summary-background.svg'
