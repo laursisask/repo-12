@@ -42,6 +42,10 @@ module.exports = {
             path: 'https://developer.adobe.com/express/embed-sdk/docs/guides/'
           },
         ]
+      },
+      {
+        title: 'Community', 
+        path: 'https://developer.adobe.com/express/community/'
       }
     ],
   },
