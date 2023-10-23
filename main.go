@@ -28,6 +28,9 @@ import (
 	addsvchandler "moul.io/grpcbin/handler/addsvc"
 	grpcbinhandler "moul.io/grpcbin/handler/grpcbin"
 	hellohandler "moul.io/grpcbin/handler/hello"
+
+	grpctrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 var (
@@ -109,6 +112,9 @@ var index = `<!DOCTYPE html>
 `
 
 func main() {
+	tracer.Start()
+	defer tracer.Stop()
+
 	// parse flags
 	flag.Parse()
 
@@ -119,8 +125,12 @@ func main() {
 			log.Fatalf("failted to listen: %v", err)
 		}
 
-		// create gRPC server
-		s := grpc.NewServer()
+		si := grpctrace.StreamServerInterceptor(
+			grpctrace.WithStreamMessages(false),
+		)
+		ui := grpctrace.UnaryServerInterceptor()
+
+		s := grpc.NewServer(grpc.StreamInterceptor(si), grpc.UnaryInterceptor(ui))
 		grpcbinpb.RegisterGRPCBinServer(s, &grpcbinhandler.Handler{})
 		hellopb.RegisterHelloServiceServer(s, &hellohandler.Handler{})
 		addsvcpb.RegisterAddServer(s, &addsvchandler.Handler{})
