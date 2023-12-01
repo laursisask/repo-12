@@ -417,7 +417,7 @@
           ]
           + if this.config.enableHardware then
             [{
-              alert: 'NodeHardwareTemparatureHigh',
+              alert: 'NodeHardwareTemperatureHigh',
               expr: |||
                 avg_over_time(node_hwmon_temp_celsius{%(filteringSelector)s}[5m]) > %(temperatureWarnTreshold)d
               ||| % this.config,
@@ -426,7 +426,7 @@
                 severity: 'warning',
               },
               annotations: {
-                summary: "Sensor's temparature is high.",
+                summary: "Sensor's temperature is high.",
                 description: 'Sensor {{ $labels.sensor }} is reporting high temperature on chip {{ $labels.chip }}, and has been above %(temperatureWarnTreshold)d%% for the last 15 minutes, is currently at {{ printf "%%.2f" $value }}%%.',
               },
             }] else [],
