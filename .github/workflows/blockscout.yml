@@ -759,7 +759,6 @@ jobs:
       build-args: |
         "FORCE_MIX_COMPILE_CACHE_MISS=${{ needs.set-docker-vars.outputs.sha }}"
       trivy: true
-      trivy-timeout: 20m
 
 
   Build-Blockscout-api:
@@ -778,4 +777,3 @@ jobs:
         "DISABLE_INDEXER=true",
         "DISABLE_WEBAPP=true",
       trivy: true
-      trivy-timeout: 20m
