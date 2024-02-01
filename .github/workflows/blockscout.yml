@@ -753,7 +753,7 @@ jobs:
       workload-id-provider: ${{  needs.set-docker-vars.outputs.workload-id-provider }}
       service-account: ${{ needs.set-docker-vars.outputs.service-account }}
       artifact-registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout"
-      tag: ${{ needs.set-docker-vars.outputs.tag }}
+      tags: ${{ needs.set-docker-vars.outputs.tag }}
       context: .
       file: docker/Dockerfile
       build-args: |
@@ -769,7 +769,7 @@ jobs:
       workload-id-provider: ${{  needs.set-docker-vars.outputs.workload-id-provider }}
       service-account: ${{ needs.set-docker-vars.outputs.service-account }}
       artifact-registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout-api"
-      tag: ${{ needs.set-docker-vars.outputs.tag }}
+      tags: ${{ needs.set-docker-vars.outputs.tag }}
       context: .
       file: docker/Dockerfile
       build-args: |
