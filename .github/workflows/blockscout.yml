@@ -20,12 +20,12 @@ env:
   ACCOUNT_AUTH0_DOMAIN: 'blockscoutcom.us.auth0.com'
   ACCOUNT_AUTH0_LOGOUT_URL: 'https://blockscoutcom.us.auth0.com/v2/logout'
   ACCOUNT_AUTH0_LOGOUT_RETURN_URL: 'https://blockscout.com/auth/logout'
-  CACHE_VERSION: 20
+  CACHE_VERSION: 22
 
 jobs:
   build-and-cache:
     name: Build and Cache deps
-    runs-on: [ '8-cpu','self-hosted', 'blockscout']
+    runs-on: [ '8-cpu', 'self-hosted', 'blockscout']
     container:
       image: us-west1-docker.pkg.dev/devopsre/actions-runner-controller/blockscout:latest
       options: --user root
@@ -699,7 +699,6 @@ jobs:
           name: Wallaby screenshots
           path: apps/block_scout_web/screenshots/*.png
 
-
   publish-test-results:
     name: "Publish Unit Tests Results"
     runs-on: ['self-hosted', '8-cpu', 'blockscout']
@@ -745,35 +744,71 @@ jobs:
           echo "tag=${{ github.ref != 'ref/heads/main' && 'testing' || 'latest' }}" >> $GITHUB_OUTPUT
           echo "sha=${{ github.ref != 'ref/heads/main' && github.event.pull_request.head.sha || github.sha }}" >> $GITHUB_OUTPUT
 
-
-  Build-Blockscout:
-    uses: celo-org/reusable-workflows/.github/workflows/container-cicd.yaml@v2.0
+  build-blockscout-container:
+    runs-on: ['self-hosted', '8-cpu', 'blockscout']
+    container:
+      image: us-west1-docker.pkg.dev/devopsre/actions-runner-controller/blockscout:latest
+      options: --user root
     needs: [set-docker-vars]
-    with:
-      workload-id-provider: ${{  needs.set-docker-vars.outputs.workload-id-provider }}
-      service-account: ${{ needs.set-docker-vars.outputs.service-account }}
-      artifact-registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout"
-      tags: ${{ needs.set-docker-vars.outputs.tag }}
-      context: .
-      file: docker/Dockerfile
-      build-args: |
-        "FORCE_MIX_COMPILE_CACHE_MISS=${{ needs.set-docker-vars.outputs.sha }}"
-      trivy: true
+    permissions:
+      contents: read
+      id-token: write
+      security-events: write
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: Authenticate to Google Cloud
+        uses: celo-org/reusable-workflows/.github/actions/auth-gcp-artifact-registry@v2.0.1
+        with:
+          workload-id-provider: ${{ needs.set-docker-vars.outputs.workload-id-provider }}
+          service-account: ${{ needs.set-docker-vars.outputs.service-account }}
+          access-token-lifetime: "20m"
+          docker-gcp-registries: "us-west1-docker.pkg.dev"
+      - name: Build, push and scan the container
+        uses: celo-org/reusable-workflows/.github/actions/build-container@main
+        with:
+          platforms: linux/amd64
+          registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout"
+          tags: ${{ needs.set-docker-vars.outputs.tag }}
+          context: .
+          dockerfile: docker/Dockerfile
+          build-args: |
+            "FORCE_MIX_COMPILE_CACHE_MISS=${{ needs.set-docker-vars.outputs.sha }}"
+          push: true
+          trivy: true
 
-
-  Build-Blockscout-api:
-    uses: celo-org/reusable-workflows/.github/workflows/container-cicd.yaml@v2.0
+  build-blockscout-api-container:
+    runs-on: ['self-hosted', '8-cpu', 'blockscout']
+    container:
+      image: us-west1-docker.pkg.dev/devopsre/actions-runner-controller/blockscout:latest
+      options: --user root
     needs: [set-docker-vars]
-    with:
-      workload-id-provider: ${{  needs.set-docker-vars.outputs.workload-id-provider }}
-      service-account: ${{ needs.set-docker-vars.outputs.service-account }}
-      artifact-registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout-api"
-      tags: ${{ needs.set-docker-vars.outputs.tag }}
-      context: .
-      file: docker/Dockerfile
-      build-args: |
-        "FORCE_MIX_COMPILE_CACHE_MISS=${{ needs.set-docker-vars.outputs.sha }}"
-        "DISABLE_WRITE_API=true",
-        "DISABLE_INDEXER=true",
-        "DISABLE_WEBAPP=true",
-      trivy: true
+    permissions:
+      contents: read
+      id-token: write
+      security-events: write
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: Authenticate to Google Cloud
+        uses: celo-org/reusable-workflows/.github/actions/auth-gcp-artifact-registry@v2.0.1
+        with:
+          workload-id-provider: ${{ needs.set-docker-vars.outputs.workload-id-provider }}
+          service-account: ${{ needs.set-docker-vars.outputs.service-account }}
+          access-token-lifetime: "20m"
+          docker-gcp-registries: "us-west1-docker.pkg.dev"
+      - name: Build, push and scan the container
+        uses: celo-org/reusable-workflows/.github/actions/build-container@main
+        with:
+          platforms: linux/amd64
+          registry: "${{ needs.set-docker-vars.outputs.artifact-registry }}/blockscout"
+          tags: ${{ needs.set-docker-vars.outputs.tag }}
+          context: .
+          dockerfile: docker/Dockerfile
+          build-args: |
+            "FORCE_MIX_COMPILE_CACHE_MISS=${{ needs.set-docker-vars.outputs.sha }}"
+            "DISABLE_WRITE_API=true",
+            "DISABLE_INDEXER=true",
+            "DISABLE_WEBAPP=true",
+          push: true
+          trivy: true
