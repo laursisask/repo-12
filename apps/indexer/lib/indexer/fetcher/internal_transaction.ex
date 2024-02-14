@@ -242,7 +242,28 @@ defmodule Indexer.Fetcher.InternalTransaction do
   end
 
   defp import_internal_transaction(internal_transactions_params, unique_numbers) do
-    internal_transactions_params_without_failed_creations = remove_failed_creations(internal_transactions_params)
+    unique_hashes =
+      unique_numbers
+      |> Enum.map(fn block_number ->
+        case Chain.number_to_any_block(block_number) do
+          {:ok, block} -> block.hash
+          {:error, :not_found} -> nil
+        end
+      end)
+
+    block_number_to_hash_map =
+      unique_numbers
+      |> Enum.zip(unique_hashes)
+      |> Map.new()
+
+    # enrich internal TXs with block hashes
+    enriched_itx_params =
+      internal_transactions_params
+      |> Enum.map(fn itx ->
+        Map.put(itx, :block_hash, block_number_to_hash_map[itx.block_number])
+      end)
+
+    internal_transactions_params_without_failed_creations = remove_failed_creations(enriched_itx_params)
 
     addresses_params =
       Addresses.extract_addresses(%{
