@@ -148,10 +148,15 @@ defmodule EthereumJSONRPC.Geth do
   end
 
   defp debug_trace_block_by_number_request({id, block_number}) do
+    timeout = Application.get_env(:ethereum_jsonrpc, :internal_transaction_timeout)
+
     request(%{
       id: id,
       method: "debug_traceBlockByNumber",
-      params: [integer_to_quantity(block_number), tracer_params()]
+      params: [
+        integer_to_quantity(block_number),
+        %{timeout: timeout} |> Map.merge(tracer_params())
+      ]
     })
   end
 
