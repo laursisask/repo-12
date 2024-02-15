@@ -3,8 +3,6 @@ import Config
 config :block_scout_web,
   defi: [
     %{title: "Moola", url: "https://moola.market/"},
-    %{title: "Pinnata", url: "https://www.pinnata.xyz/farm#/"},
-    %{title: "GoodGhosting", url: "https://goodghosting.com/"},
     %{title: "Revo", url: "https://revo.market/"},
     %{title: "ImmortalDao Finance", url: "https://www.immortaldao.finance"}
   ],
@@ -18,15 +16,11 @@ config :block_scout_web,
   wallet_list: [
     %{title: "Valora", url: "https://valoraapp.com/"},
     %{title: "Celo Terminal", url: "https://celoterminal.com/"},
-    %{title: "Celo Wallet", url: "https://celowallet.app/"},
-    %{title: "Node Wallet", url: "https://www.nodewallet.xyz/"}
+    %{title: "Celo Wallet", url: "https://celowallet.app/"}
   ],
   nft_list: [
-    %{title: "Niftydrop", url: "https://niftydrop.net/"},
     %{title: "NFT Viewer", url: "https://nfts.valoraapp.com/"},
-    %{title: "Cyberbox", url: "https://cyberbox.art/"},
-    %{title: "Nomspace", url: "https://nom.space/"},
-    %{title: "Alities", url: "https://alities.io/"}
+    %{title: "Nomspace", url: "https://nom.space/"}
   ],
   connect_list: [
     %{title: "impactMarket", url: "https://impactmarket.com/"},
@@ -39,21 +33,17 @@ config :block_scout_web,
     %{title: "ChiSpend", url: "https://chispend.com/"}
   ],
   finance_tools_list: [
-    %{title: "Celo Tracker", url: "https://celotracker.com/"},
-    %{title: "celo.tax", url: "https://celo.tax/"},
-    %{title: "Trelis", url: "https://trelis.com/"}
+    %{title: "Celo Tracker", url: "https://celotracker.com/"}
   ],
   resources: [
     %{title: "Celo Vote", url: "https://celovote.com/"},
     %{title: "Celo Forum", url: "https://forum.celo.org/"},
     %{title: "TheCelo", url: "https://thecelo.com/"},
-    %{title: "Validators", url: "https://celo.org/validators/explore"},
     %{title: "Celo Reserve", url: "https://celoreserve.org/"},
     %{title: "Celo Docs", url: "https://docs.celo.org/"}
   ],
   learning: [
     %{title: "Celo Whitepaper", url: "https://celo.org/papers/whitepaper"},
-    %{title: "Learn Celo", url: "https://learn.figment.io/protocols/celo"},
     %{title: "Coinbase Earn", url: "https://www.coinbase.com/price/celo"}
   ],
   other_networks: [
