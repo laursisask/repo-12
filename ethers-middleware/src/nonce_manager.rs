@@ -65,6 +65,10 @@ where
         Ok(nonce)
     } // guard dropped here
 
+    pub fn reset_nonce(&self) {
+        self.initialized.store(false, Ordering::SeqCst);
+    }
+
     async fn get_transaction_count_with_manager(
         &self,
         block: Option<BlockId>,
