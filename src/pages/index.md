@@ -60,16 +60,14 @@ Check out all the add-ons available in Adobe Express.
 
 Give your users of all skills levels the power to edit and create with access to thousands of templates, fonts, stock images, and videos.
 
-![Adobe Express functionality](./images/Embed.png)
+![Adobe Express functionality](./images/Embed_IntegratedQuickActions.png)
 
 - [Try the demo](https://demo.expressembed.com)
 - [View documentation](https://developer.adobe.com/express/embed-sdk/docs/guides)
   
-<TextBlock slots="heading,text" className="announcement exploreCapabilities walkthetalk" theme="light"/>
+<TextBlock slots="heading" className="announcement exploreCapabilities walkthetalk" theme="light"/>
 
-### We walk the talk.
-
-Catch Adobe Express in other Adobe products.
+### Trusted by leading tools.
 
 <ImageTextBlock slots="image,heading,text" repeat="2" theme="light" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='secondary'/>
 
@@ -77,13 +75,13 @@ Catch Adobe Express in other Adobe products.
 
 ## Customize within Adobe Acrobat.
 
-The embedded full editor allows users to create eye-catching cover and divider pages easily and quickly within Acrobat.
+Acrobat users can quickly and easily create eye-catching cover and divider pages.
 
-![Creative Cloud desktop](./images/CCEmbed.png)
+![Kajabi Creator Studio](./images/ValueProp_01_Embed_Kajabi.png)
 
-## Edit within Adobe Creative Cloud desktop.
+## Edit within Kajabi Creator Studio
 
-Launch Adobe Express image and video quick actions within Creative Cloud on desktop.
+Kajabi users can build polished brand and marketing assets for their businesses without deep design expertise.
 
 <WrapperComponent slots="content" repeat="1" theme="light" />
 
