@@ -329,6 +329,10 @@
      font-weight: 500 !important;
  }
 
+ .marketPlace>div>div>a>div>h2>p>span>picture>img{
+    border-radius:25px;
+}
+
  .inRow>div{
     margin-top: 1%;
     margin-bottom: 2%

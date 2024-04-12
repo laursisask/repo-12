@@ -1,25 +1,25 @@
 <MiniResourceCard slots="image,heading,text,link" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inColumn" />
 
-![Color Designer](../images/colordesigner_rounded.png)
+![Artboard Mockups](../images/Artboard_Mockups.png)
 
-## Color Designer
+## Artboard Mockups
 
-Easily build color palettes then generate tints and shades.
+Access 10,000+ high quality mockups right inside Adobe Express.
 
-https://new.express.adobe.com/new?category=addOns&addOnId=wii0lk8nm
+https://new.express.adobe.com/new?category=addOns&launchAddOnId=wl102g614
 
-![OneDrive](../images/OneDrive_rounded.png)
+![Krikey AI Animate](../images/KirkeyAIAnimate.png)
 
-## OneDrive
+## Krikey AI Animate
 
-Bring assets to and from OneDrive to fuel your Adobe Express projects.
+Generate 3D animated talking avatars.
 
-https://new.express.adobe.com/new?category=addOns&addOnId=w1n2h1lgm
+https://new.express.adobe.com/new?category=addOns&launchAddOnId=w0n746333
 
-![Spacefill](../images/spacefill_rounded.png)
+![Speedpaint](../images/Speedpaint.png)
 
-## Spacefill
+## Speedpaint
 
-Make generative background patterns using geometric shapes and tiles.
+ Convert any image to a speed drawing video.
 
 https://new.express.adobe.com/new?category=addOns&addOnId=w466h1l71
