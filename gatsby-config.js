@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         title: 'Fund for Design', 
-        path: 'https://developers.adobe.com/express/fund-for-design'
+        path: 'https://developers.adobe.com/fund-for-design'
       }
     ],
   },
