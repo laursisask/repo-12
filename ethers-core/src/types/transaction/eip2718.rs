@@ -245,6 +245,20 @@ impl TypedTransaction {
         self
     }
 
+    pub fn set_max_fee_per_gas<T: Into<U256>>(&mut self, gas_price: T) -> &mut Self {
+        let gas_price = gas_price.into();
+        match self {
+            Legacy(inner) => inner.gas_price = Some(gas_price),
+            Eip2930(inner) => inner.tx.gas_price = Some(gas_price),
+            Eip1559(inner) => {
+                inner.max_fee_per_gas = Some(gas_price);
+            }
+            #[cfg(feature = "optimism")]
+            DepositTransaction(inner) => inner.tx.gas_price = Some(gas_price),
+        };
+        self
+    }
+
     pub fn chain_id(&self) -> Option<U64> {
         match self {
             Legacy(inner) => inner.chain_id,
