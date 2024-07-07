@@ -176,8 +176,14 @@ func main() {
 			httpSrv.TLSConfig = &tls.Config{Certificates: []tls.Certificate{cert}}
 		}
 
+		si := grpctrace.StreamServerInterceptor(
+			grpctrace.WithStreamMessages(false),
+		)
+		ui := grpctrace.UnaryServerInterceptor()
+
+		s := grpc.NewServer(grpc.Creds(creds), grpc.StreamInterceptor(si), grpc.UnaryInterceptor(ui))
+
 		// setup grpc servef
-		s := grpc.NewServer(grpc.Creds(creds))
 		grpcbinpb.RegisterGRPCBinServer(s, &grpcbinhandler.Handler{})
 		hellopb.RegisterHelloServiceServer(s, &hellohandler.Handler{})
 		addsvcpb.RegisterAddServer(s, &addsvchandler.Handler{})
