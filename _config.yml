@@ -16,7 +16,7 @@ timezone: Asia/Calcutta
 
 title: Daivik Karbhari # the main title
 
-tagline: Blogs on Tech, Life and Everything in Between # the tagline below the title
+tagline: Learning @ Life # the tagline below the title
 
 description: >- # used by seo meta and the atom feed
   Daivik Karbhari's personal blog. I write about tech, life and everything in between. With a focus on software development, I share my thoughts and experiences on various topics.
@@ -28,8 +28,8 @@ url: "https://User-DK.github.io"
 github:
   username: User-DK # change to your github username
 
-# twitter:
-#   username:  # change to your twitter username
+twitter:
+  username:  karb32491
 
 linkedin:
   username: daivik-karbhari
@@ -128,7 +128,7 @@ comments:
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
     lang: 'en'
-    reactions_enabled: `1`
+    reactions_enabled: '1'
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:

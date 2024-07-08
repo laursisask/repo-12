@@ -19,6 +19,10 @@ platforms:
   - type: Linkedin
     icon: "fab fa-linkedin"
     link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
+
+    -type: Whatsapp
+    icon: "fab fa-whatsapp"
+    link: "https://api.whatsapp.com/send?text=TITLE%20URL"
   
   # - type: Weibo
   #   icon: "fab fa-weibo"
