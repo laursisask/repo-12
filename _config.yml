@@ -121,12 +121,12 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: "User-DK/User-DK.github.io"
-    repo_id: "822501089"
-    category: 
-    category_id:
-    mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
+    repo_id: "R_kgDOMQZe4Q"
+    category: "Comments for my Blog"
+    category_id: "DIC_kwDOMQZe4c4Cgo8I"
+    mapping: 'pathname' # optional, default to 'pathname'
+    strict: '0' # optional, default to '0'
+    input_position: 'bottom' # optional, default to 'bottom'
     lang: 'en'
     reactions_enabled: '1'
 
