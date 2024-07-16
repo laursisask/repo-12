@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"crypto/tls"
 	"flag"
 	"fmt"
@@ -12,6 +13,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 
 	"golang.org/x/crypto/acme/autocert"
 
@@ -29,6 +31,7 @@ import (
 	grpcbinhandler "moul.io/grpcbin/handler/grpcbin"
 	hellohandler "moul.io/grpcbin/handler/hello"
 
+	"github.com/DataDog/datadog-go/statsd"
 	grpctrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
@@ -111,12 +114,64 @@ var index = `<!DOCTYPE html>
 </html>
 `
 
+const metricName = "golang_grpcbin.timer"
+
+func getLatencyHandlerUnary(statsd *statsd.Client, isTLS bool) grpc.UnaryServerInterceptor {
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+		if statsd == nil {
+			return handler(ctx, req)
+		}
+		startTime := time.Now()
+		resp, err = handler(ctx, req)
+		latency := time.Now().Sub(startTime).Nanoseconds()
+
+		tags := []string{fmt.Sprintf("resource_name:%s", info.FullMethod)}
+		if isTLS {
+			tags = append(tags, "tls.library:go")
+		}
+		if service := os.Getenv("DD_SERVICE"); service != "" {
+			tags = append(tags, fmt.Sprintf("service:%s", os.Getenv("DD_SERVICE")))
+		}
+		if env := os.Getenv("DD_ENV"); env != "" {
+			tags = append(tags, fmt.Sprintf("env:%s", os.Getenv("DD_ENV")))
+		}
+
+		statsd.Histogram(metricName, float64(latency)/1000000000, tags, 1)
+
+		return
+	}
+}
+
+func getLatencyHandlerStream(statsd *statsd.Client, isTLS bool) grpc.StreamServerInterceptor {
+	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
+		if statsd == nil {
+			return handler(srv, ss)
+		}
+		startTime := time.Now()
+		err := handler(srv, ss)
+		latency := time.Now().Sub(startTime).Nanoseconds()
+
+		tags := []string{fmt.Sprintf("resource_name:%s", info.FullMethod)}
+		if isTLS {
+			tags = append(tags, "tls.library:go")
+		}
+		statsd.Histogram(metricName, float64(latency)/1000000000, tags, 1)
+
+		return err
+	}
+}
+
 func main() {
 	tracer.Start()
 	defer tracer.Stop()
 
 	// parse flags
 	flag.Parse()
+
+	statsdInstance, err := statsd.New(os.Getenv("STATSD_ADDR") + ":8125")
+	if err != nil {
+		fmt.Printf("no statsd: %s\n", err)
+	}
 
 	// insecure listener
 	go func() {
@@ -125,12 +180,13 @@ func main() {
 			log.Fatalf("failted to listen: %v", err)
 		}
 
-		si := grpctrace.StreamServerInterceptor(
-			grpctrace.WithStreamMessages(false),
+		s := grpc.NewServer(
+			grpc.ChainStreamInterceptor(
+				grpctrace.StreamServerInterceptor(grpctrace.WithStreamMessages(false)),
+				getLatencyHandlerStream(statsdInstance, false),
+			),
+			grpc.ChainUnaryInterceptor(grpctrace.UnaryServerInterceptor(), getLatencyHandlerUnary(statsdInstance, false)),
 		)
-		ui := grpctrace.UnaryServerInterceptor()
-
-		s := grpc.NewServer(grpc.StreamInterceptor(si), grpc.UnaryInterceptor(ui))
 		grpcbinpb.RegisterGRPCBinServer(s, &grpcbinhandler.Handler{})
 		hellopb.RegisterHelloServiceServer(s, &hellohandler.Handler{})
 		addsvcpb.RegisterAddServer(s, &addsvchandler.Handler{})
@@ -176,12 +232,14 @@ func main() {
 			httpSrv.TLSConfig = &tls.Config{Certificates: []tls.Certificate{cert}}
 		}
 
-		si := grpctrace.StreamServerInterceptor(
-			grpctrace.WithStreamMessages(false),
+		s := grpc.NewServer(
+			grpc.Creds(creds),
+			grpc.ChainStreamInterceptor(
+				grpctrace.StreamServerInterceptor(grpctrace.WithStreamMessages(false)),
+				getLatencyHandlerStream(statsdInstance, true),
+			),
+			grpc.ChainUnaryInterceptor(grpctrace.UnaryServerInterceptor(), getLatencyHandlerUnary(statsdInstance, true)),
 		)
-		ui := grpctrace.UnaryServerInterceptor()
-
-		s := grpc.NewServer(grpc.Creds(creds), grpc.StreamInterceptor(si), grpc.UnaryInterceptor(ui))
 
 		// setup grpc servef
 		grpcbinpb.RegisterGRPCBinServer(s, &grpcbinhandler.Handler{})

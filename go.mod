@@ -3,6 +3,7 @@ module moul.io/grpcbin
 go 1.14
 
 require (
+	github.com/DataDog/datadog-go v3.2.0+incompatible
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/moul/pb v0.0.0-20180404114147-54bdd96e6a52
 	github.com/smartystreets/goconvey v1.7.2
