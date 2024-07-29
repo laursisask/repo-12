@@ -62,4 +62,3 @@ HSC
 - MySQL
 
 You can see my CV -> <a href = "https://drive.google.com/file/d/11uLy2ZyYFwq_Sopno9NFdJLU5q5cMoSy/view?usp=sharing" target="_blank">here</a>.
-
