@@ -249,7 +249,7 @@ jobs:
       uses: actions/checkout@v3
     - continue-on-error: true
       name: golangci-lint
-      uses: golangci/golangci-lint-action@v3.4.0
+      uses: golangci/golangci-lint-action@v6.1.1
       with:
         version: v1.52
     - name: after
