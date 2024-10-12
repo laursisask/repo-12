@@ -26,7 +26,7 @@ setup(name='pipelinewise-tap-zuora',
           'test': [
               'ipdb',
               'pylint==2.9.*',
-              'pytest==6.2.*',
+              'pytest>=6.2,<8.4',
           ]
       },
       entry_points='''
