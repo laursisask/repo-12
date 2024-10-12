@@ -20,7 +20,7 @@ setup(name='pipelinewise-tap-zuora',
       install_requires=[
           'pipelinewise-singer-python==1.*',
           'requests==2.20.0',
-          'pendulum==1.2.0',
+          'pendulum==3.0.0',
       ],
       extras_require={
           'test': [
