@@ -307,7 +307,7 @@ jobs:
         version: latest
         workdir: distributions/${{ inputs.distribution }}
     - continue-on-error: true
-      uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b
+      uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
       with:
         if-no-files-found: error
         name: artifacts-${{ inputs.distribution }}-${{ matrix.GOOS }}-${{ matrix.GOARCH
