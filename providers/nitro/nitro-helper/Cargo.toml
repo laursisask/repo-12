@@ -18,7 +18,7 @@ subtle-encoding = { version = "0.5", features = [ "bech32-preview" ] }
 sysinfo = "0.28"
 tempfile = "3"
 tendermint = "0.30"
-tendermint-config = "0.30"
+tendermint-config = "0.34"
 tmkms-light = { path = "../../.." }
 tokio = { version = "1", features = [ "rt" ] }
 toml = "0.7"

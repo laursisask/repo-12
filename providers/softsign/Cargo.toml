@@ -17,7 +17,7 @@ subtle = "2"
 subtle-encoding = { version = "0.5", features = ["bech32-preview"] }
 tempfile = "3"
 tendermint = "0.30"
-tendermint-config = "0.30"
+tendermint-config = "0.34"
 tendermint-p2p = "0.30"
 tmkms-light = { path = "../.." }
 tracing = "0.1"
