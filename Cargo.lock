@@ -627,9 +627,9 @@ dependencies = [
 
 [[package]]
 name = "const-oid"
-version = "0.9.1"
+version = "0.9.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cec318a675afcb6a1ea1d4340e2d377e56e47c266f28043ceccbf4412ddfdd3b"
+checksum = "c2459377285ad874054d797f3ccebf984978aa39129f6eafde5cdc8315b612f8"
 
 [[package]]
 name = "core-foundation"
@@ -878,6 +878,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "der"
+version = "0.7.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f55bf8e7b65898637379c1b74eb1551107c8294ed26d855ceb9fd1a09cfc9bc0"
+dependencies = [
+ "const-oid",
+ "zeroize",
+]
+
+[[package]]
 name = "digest"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -913,6 +923,7 @@ version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5fb04eee5d9d907f29e80ee6b0e78f7e2c82342c63e3580d8c4f69d9d5aad963"
 dependencies = [
+ "pkcs8 0.10.2",
  "serde",
  "signature 2.1.0",
 ]
@@ -2046,9 +2057,9 @@ version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eff33bdbdfc54cc98a2eca766ebdec3e1b8fb7387523d5c9c9a2891da856f719"
 dependencies = [
- "der",
- "pkcs8",
- "spki",
+ "der 0.6.1",
+ "pkcs8 0.9.0",
+ "spki 0.6.0",
  "zeroize",
 ]
 
@@ -2058,8 +2069,18 @@ version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9eca2c590a5f85da82668fa685c09ce2888b9430e83299debf1f34b65fd4a4ba"
 dependencies = [
- "der",
- "spki",
+ "der 0.6.1",
+ "spki 0.6.0",
+]
+
+[[package]]
+name = "pkcs8"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f950b2377845cebe5cf8b5165cb3cc1a5e0fa5cfa3e1f7f55707d8fd82e0a7b7"
+dependencies = [
+ "der 0.7.9",
+ "spki 0.7.3",
 ]
 
 [[package]]
@@ -2122,7 +2143,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e48e50df39172a3e7eb17e14642445da64996989bc212b583015435d39a58537"
 dependencies = [
  "bytes 1.2.1",
- "prost-derive",
+ "prost-derive 0.11.8",
+]
+
+[[package]]
+name = "prost"
+version = "0.13.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b0487d90e047de87f984913713b85c601c05609aad5b0df4b4573fbf69aa13f"
+dependencies = [
+ "bytes 1.2.1",
+ "prost-derive 0.13.3",
 ]
 
 [[package]]
@@ -2139,13 +2170,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "prost-derive"
+version = "0.13.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e9552f850d5f0964a4e4d0bf306459ac29323ddfbae05e35a7c0d35cb0803cc5"
+dependencies = [
+ "anyhow",
+ "itertools",
+ "proc-macro2 1.0.69",
+ "quote 1.0.33",
+ "syn 2.0.38",
+]
+
+[[package]]
 name = "prost-types"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4dfaa718ad76a44b3415e6c4d53b17c8f99160dcb3a99b10470fce8ad43f6e3e"
 dependencies = [
  "bytes 1.2.1",
- "prost",
+ "prost 0.11.8",
 ]
 
 [[package]]
@@ -2342,7 +2386,7 @@ dependencies = [
  "num-iter",
  "num-traits",
  "pkcs1",
- "pkcs8",
+ "pkcs8 0.9.0",
  "rand_core 0.6.4",
  "serde",
  "signature 1.6.4",
@@ -2714,7 +2758,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "67cf02bbac7a337dc36e4f5a693db6c21e7863f45070f7064577eb4367a3212b"
 dependencies = [
  "base64ct",
- "der",
+ "der 0.6.1",
+]
+
+[[package]]
+name = "spki"
+version = "0.7.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d91ed6c858b01f942cd56b37a94b3e0a1798290327d1236e4d9cf4eaca44d29d"
+dependencies = [
+ "base64ct",
+ "der 0.7.9",
 ]
 
 [[package]]
@@ -2837,7 +2891,7 @@ dependencies = [
  "futures 0.3.21",
  "num-traits",
  "once_cell",
- "prost",
+ "prost 0.11.8",
  "prost-types",
  "serde",
  "serde_bytes",
@@ -2847,7 +2901,35 @@ dependencies = [
  "signature 1.6.4",
  "subtle",
  "subtle-encoding",
- "tendermint-proto",
+ "tendermint-proto 0.30.0",
+ "time 0.3.11",
+ "zeroize",
+]
+
+[[package]]
+name = "tendermint"
+version = "0.39.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2f3afea7809ffaaf1e5d9c3c9997cb3a834df7e94fbfab2fad2bc4577f1cde41"
+dependencies = [
+ "bytes 1.2.1",
+ "digest 0.10.5",
+ "ed25519 2.2.1",
+ "ed25519-consensus",
+ "flex-error",
+ "futures 0.3.21",
+ "num-traits",
+ "once_cell",
+ "prost 0.13.3",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+ "serde_repr",
+ "sha2 0.10.6",
+ "signature 2.1.0",
+ "subtle",
+ "subtle-encoding",
+ "tendermint-proto 0.39.1",
  "time 0.3.11",
  "zeroize",
 ]
@@ -2861,7 +2943,7 @@ dependencies = [
  "flex-error",
  "serde",
  "serde_json",
- "tendermint",
+ "tendermint 0.30.0",
  "toml 0.5.11",
  "url",
 ]
@@ -2880,13 +2962,13 @@ dependencies = [
  "flume",
  "hkdf",
  "merlin",
- "prost",
+ "prost 0.11.8",
  "rand_core 0.5.1",
  "sha2 0.10.6",
  "signature 1.6.4",
  "subtle",
- "tendermint",
- "tendermint-proto",
+ "tendermint 0.30.0",
+ "tendermint-proto 0.30.0",
  "tendermint-std-ext",
  "x25519-dalek",
  "zeroize",
@@ -2902,8 +2984,23 @@ dependencies = [
  "flex-error",
  "num-derive 0.3.3",
  "num-traits",
- "prost",
+ "prost 0.11.8",
  "prost-types",
+ "serde",
+ "serde_bytes",
+ "subtle-encoding",
+ "time 0.3.11",
+]
+
+[[package]]
+name = "tendermint-proto"
+version = "0.39.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf3abf34ecf33125621519e9952688e7a59a98232d51538037ba21fbe526a802"
+dependencies = [
+ "bytes 1.2.1",
+ "flex-error",
+ "prost 0.13.3",
  "serde",
  "serde_bytes",
  "subtle-encoding",
@@ -3003,13 +3100,13 @@ version = "0.4.2"
 dependencies = [
  "ed25519-consensus",
  "flex-error",
- "prost",
+ "prost 0.11.8",
  "serde",
  "serde_json",
  "subtle-encoding",
- "tendermint",
+ "tendermint 0.39.1",
  "tendermint-p2p",
- "tendermint-proto",
+ "tendermint-proto 0.30.0",
  "tracing",
 ]
 
@@ -3058,7 +3155,7 @@ dependencies = [
  "sgxs-loaders",
  "subtle-encoding",
  "tempfile",
- "tendermint",
+ "tendermint 0.39.1",
  "tendermint-config",
  "tmkms-light",
  "tokio 0.2.25",
@@ -3082,7 +3179,7 @@ dependencies = [
  "serde_json",
  "subtle",
  "subtle-encoding",
- "tendermint",
+ "tendermint 0.39.1",
  "tendermint-p2p",
  "tmkms-light",
  "tmkms-nitro-helper",
@@ -3108,7 +3205,7 @@ dependencies = [
  "subtle-encoding",
  "sysinfo",
  "tempfile",
- "tendermint",
+ "tendermint 0.39.1",
  "tendermint-config",
  "tmkms-light",
  "tokio 1.25.0",
@@ -3132,7 +3229,7 @@ dependencies = [
  "subtle",
  "subtle-encoding",
  "tempfile",
- "tendermint",
+ "tendermint 0.39.1",
  "tendermint-config",
  "tendermint-p2p",
  "tmkms-light",

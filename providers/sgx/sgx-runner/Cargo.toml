@@ -11,7 +11,7 @@ ed25519 = { version = "2", features = ["serde"] }
 ed25519-consensus =  { version = "2", features = ["serde"] }
 rsa = { version = "0.7", features = ["serde", "std"] }
 sgx-isa = { version = "0.4", features = ["serde"] }
-tendermint = "0.30"
+tendermint = "0.39"
 tendermint-config = "0.30"
 tmkms-light = { path = "../../.." }
 zeroize = "1"
