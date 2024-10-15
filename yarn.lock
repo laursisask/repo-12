@@ -4218,17 +4218,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@endo/env-options@npm:^1.1.1, @endo/env-options@npm:^1.1.4":
+"@endo/env-options@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@endo/env-options@npm:1.1.3"
+  checksum: 10c0/ed589c489a3969d8792c31dc11bd019503ae80d0fb42c66184f4c45b34003a64f860ae74f0c8d984ca64ca386720f6559525ca13075ba0107b9cc8d9995394ad
+  languageName: node
+  linkType: hard
+
+"@endo/env-options@npm:^1.1.4":
   version: 1.1.4
   resolution: "@endo/env-options@npm:1.1.4"
   checksum: 10c0/8816c8fe1332a6f3366e7e4849b000d757fcd181eac011ed8363ccc4e66dfa2f2d975f8d5cbfb3844f3e327c5391e77ee7e234a59a21744c74c945f683b56df1
   languageName: node
   linkType: hard
 
-"@endo/env-options@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "@endo/env-options@npm:1.1.3"
-  checksum: 10c0/ed589c489a3969d8792c31dc11bd019503ae80d0fb42c66184f4c45b34003a64f860ae74f0c8d984ca64ca386720f6559525ca13075ba0107b9cc8d9995394ad
+"@endo/env-options@npm:^1.1.7":
+  version: 1.1.7
+  resolution: "@endo/env-options@npm:1.1.7"
+  checksum: 10c0/5784bd68790041b08d9ead4f6c29cc7871d2e554c23fc44fff38cb20b6b4e55cdba2f78d844ba5ad4b0818185c32475ff318c1b77890d628690d7c7a6ede9475
   languageName: node
   linkType: hard
 
@@ -16062,7 +16069,7 @@ __metadata:
     patch-package: "npm:^7.0.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    ses: "npm:1.3.0"
+    ses: "npm:1.9.0"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.2.0"
   languageName: unknown
@@ -23565,12 +23572,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ses@npm:1.3.0":
-  version: 1.3.0
-  resolution: "ses@npm:1.3.0"
+"ses@npm:1.9.0":
+  version: 1.9.0
+  resolution: "ses@npm:1.9.0"
   dependencies:
-    "@endo/env-options": "npm:^1.1.1"
-  checksum: 10c0/a1385c91a23677de3b91ffa93a8f08134b6657f93c3002b2269c961e28c19deeeadce4ae30a7bcc177a312268fa8d21de2aa5acfc4370055c17dd8c53885ffa4
+    "@endo/env-options": "npm:^1.1.7"
+  checksum: 10c0/356f9601b04a87f33403a15fc627caf0c649d86d8d7ee1f4b3c75b947ab05c31b254c94c0aa26e9904862787c73950d5a60f3435deebe5dba23017e20c40b0cb
   languageName: node
   linkType: hard
 
