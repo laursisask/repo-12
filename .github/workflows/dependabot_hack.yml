@@ -246,7 +246,7 @@ jobs:
 
         sudo sh -c ''echo 1 > /proc/sys/net/ipv4/ip_forward'''
     - continue-on-error: true
-      uses: golang/go@go1.22.5
+      uses: golang/go@go1.23.2
     - continue-on-error: true
       uses: golang/tools@gopls/v0
     - continue-on-error: true
