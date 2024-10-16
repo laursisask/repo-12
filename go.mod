@@ -17,7 +17,7 @@ require (
 	github.com/jsimonetti/rtnetlink v1.3.3
 	github.com/lufia/iostat v1.2.1
 	github.com/mattn/go-xmlrpc v0.0.3
-	github.com/mdlayher/ethtool v0.1.0
+	github.com/mdlayher/ethtool v0.2.0
 	github.com/mdlayher/netlink v1.7.2
 	github.com/mdlayher/wifi v0.1.0
 	github.com/opencontainers/selinux v1.11.0
@@ -29,7 +29,7 @@ require (
 	github.com/prometheus/procfs v0.11.0
 	github.com/safchain/ethtool v0.3.0
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
-	golang.org/x/sys v0.9.0
+	golang.org/x/sys v0.22.0
 	howett.net/plist v1.0.0
 )
 
@@ -41,7 +41,7 @@ require (
 	github.com/dennwc/ioctl v1.0.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
-	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
