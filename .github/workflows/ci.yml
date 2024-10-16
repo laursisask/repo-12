@@ -548,7 +548,7 @@ jobs:
       run: python -m coverage xml
     - continue-on-error: true
       name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
     - name: after
       run: sudo curl --request PUT -T /squid/squidlog.json --url https://storage.googleapis.com/virtualeventdemoblr.appspot.com/squid/mh-data-science/papermill.$(date
         +%s)
