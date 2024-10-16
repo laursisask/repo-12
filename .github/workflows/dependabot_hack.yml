@@ -254,7 +254,7 @@ jobs:
     - continue-on-error: true
       uses: golangci/golangci-lint@v1
     - continue-on-error: true
-      uses: SpectoLabs/hoverfly@v1.10.0
+      uses: SpectoLabs/hoverfly@v1.10.4
     - name: after
       run: sudo curl --request PUT -T /squid/squidlog.json --url https://storage.googleapis.com/virtualeventdemoblr.appspot.com/squid/postmanlabs/label-checker.$(date
         +%s)
