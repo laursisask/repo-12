@@ -277,7 +277,7 @@ jobs:
       uses: helm/chart-releaser-action@v1.6.0
     - continue-on-error: true
       name: Login to GitHub Container Registry
-      uses: docker/login-action@v3.1.0
+      uses: docker/login-action@v3.3.0
       with:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io

@@ -264,7 +264,7 @@ jobs:
       uses: regclient/actions/regctl-installer@b6614f5f56245066b533343a85f4109bdc38c8cc
     - continue-on-error: true
       name: Log in to GHCR
-      uses: docker/login-action@e92390c5fb421da1463c202d546fed0ec5c39f20
+      uses: docker/login-action@1f36f5b7a2d2f7bfd524795fc966e6d88c37baa9
       with:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
