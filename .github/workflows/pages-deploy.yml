@@ -255,7 +255,7 @@ jobs:
     - continue-on-error: true
       id: pages
       name: Setup Pages
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v5
     - continue-on-error: true
       name: Setup Ruby
       uses: ruby/setup-ruby@v1
