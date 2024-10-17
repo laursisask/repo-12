@@ -254,7 +254,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       id: lychee
       name: Check all links at *.md and doc files
-      uses: lycheeverse/lychee-action@v1.5.1
+      uses: lycheeverse/lychee-action@v2.0.2
       with:
         args: --verbose --accept 200 --timeout 20 --max-concurrency 10 --no-progress
           './**/*.md'
