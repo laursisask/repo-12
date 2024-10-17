@@ -251,7 +251,7 @@ jobs:
         fetch-depth: 0
     - continue-on-error: true
       name: Installing Node
-      uses: actions/setup-node@v3.7.0
+      uses: actions/setup-node@v4.0.4
       with:
         node-version: 16
     - continue-on-error: true
@@ -535,7 +535,7 @@ jobs:
         fetch-depth: 0
     - continue-on-error: true
       name: Install Node
-      uses: actions/setup-node@v3.7.0
+      uses: actions/setup-node@v4.0.4
       with:
         node-version: 18
     - continue-on-error: true
