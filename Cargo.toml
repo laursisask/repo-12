@@ -12,7 +12,7 @@ resolver = "2"
 [workspace.dependencies]
 anyhow = "1.0"
 byteorder = "1.5"
-cc = "1.0.73"
+cc = "1.1.30"
 chrono = { version = "^0.4.22", features = ["serde"] }
 ffizz-header = "0.5"
 flate2 = "1"
